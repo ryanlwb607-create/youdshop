@@ -357,7 +357,9 @@ function prevBanner() {
   showBanner();
 }
 
-setInterval(nextBanner, 3000);
+setInterval(() => {
+  nextBanner();
+}, 3000);
 function toggleFavorite(index) {
 
   if (favorites.includes(index)) {

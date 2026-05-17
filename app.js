@@ -419,3 +419,19 @@ function addCategory() {
   renderCategories();
   alert("分类添加成功");
 }
+// Banner轮播
+const banners = document.querySelectorAll(".banner img");
+
+let currentBanner = 0;
+
+setInterval(() => {
+  banners[currentBanner].classList.remove("active");
+
+  currentBanner++;
+
+  if (currentBanner >= banners.length) {
+    currentBanner = 0;
+  }
+
+  banners[currentBanner].classList.add("active");
+}, 3000);

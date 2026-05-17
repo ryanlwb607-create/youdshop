@@ -330,33 +330,6 @@ if (document.getElementById("productList")) {
   renderProducts();
   updateAdminView();
 }
-function showBanner() {
-  const bannerImage = document.getElementById("bannerImage");
-  if (!bannerImage) return;
-
-  bannerImage.src = banners[bannerIndex];
-}
-
-function nextBanner() {
-  bannerIndex = (bannerIndex + 1) % banners.length;
-  showBanner();
-}
-
-function prevBanner() {
-  bannerIndex = (bannerIndex - 1 + banners.length) % banners.length;
-  showBanner();
-}
-
-showBanner();
-
-setInterval(nextBanner, 3000);
-
-  showBanner();
-}
-
-setInterval(() => {
-  nextBanner();
-}, 3000);
 
 function toggleFavorite(index) {
 

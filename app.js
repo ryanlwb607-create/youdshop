@@ -337,6 +337,8 @@ function showBanner() {
   bannerImage.src = banners[bannerIndex];
 }
 
+showBanner();
+
 function nextBanner() {
   bannerIndex++;
 
@@ -360,6 +362,7 @@ function prevBanner() {
 setInterval(() => {
   nextBanner();
 }, 3000);
+
 function toggleFavorite(index) {
 
   if (favorites.includes(index)) {

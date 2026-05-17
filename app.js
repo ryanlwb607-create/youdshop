@@ -337,24 +337,19 @@ function showBanner() {
   bannerImage.src = banners[bannerIndex];
 }
 
-showBanner();
-
 function nextBanner() {
-  bannerIndex++;
-
-  if (bannerIndex >= banners.length) {
-    bannerIndex = 0;
-  }
-
+  bannerIndex = (bannerIndex + 1) % banners.length;
   showBanner();
 }
 
 function prevBanner() {
-  bannerIndex--;
+  bannerIndex = (bannerIndex - 1 + banners.length) % banners.length;
+  showBanner();
+}
 
-  if (bannerIndex < 0) {
-    bannerIndex = banners.length - 1;
-  }
+showBanner();
+
+setInterval(nextBanner, 3000);
 
   showBanner();
 }

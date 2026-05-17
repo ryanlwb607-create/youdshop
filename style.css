@@ -516,3 +516,19 @@ button:hover {
   font-size: 16px;
   cursor: pointer;
 }
+.banner {
+  height: 260px;
+  margin: 20px auto 30px;
+}
+
+.banner img {
+  height: 260px;
+}
+
+.product-list {
+  margin-top: 20px;
+}
+
+body {
+  overflow-x: hidden;
+}

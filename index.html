@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YOUD SHOP</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-box">
+  <input type="text" id="adminUser" placeholder="管理员账号">
+  <input type="password" id="adminPass" placeholder="管理员密码">
+  <button onclick="loginAdmin()">登录</button>
+  <button onclick="logoutAdmin()">退出</button>
+</div>
+
+  <header class="topbar">
+  <h1>YOUD(TOKYO) Shop</h1>
+  <a href=" " class="fav-link">
+️ 我的收藏
+</a>
+
+  <div class="nav-right">
+    <input type="text" id="searchInput" placeholder="搜索产品...">
+
+    <select id="categoryFilter">
+      <option>全部</option>
+      <option>护肤</option>
+      <option>彩妆</option>
+      <option>保健</option>
+    </select>
+    <div class="admin-only category-manage">
+  <input type="text" id="newCategory" placeholder="新增分类名称">
+  <button onclick="addCategory()">新增分类</button>
+</div>
+  </div>
+</header>
+
+<div class="banner">
+  <button class="banner-btn left" onclick="prevBanner()">‹</button>
+
+  <img id="bannerImage"
+       src="https://picsum.photos/1200/350?random=1">
+
+  <button class="banner-btn right" onclick="nextBanner()">›</button>
+</div>
+
+    <!-- 添加产品 -->
+    <div class="form-box admin-only">
+
+      <input type="text" id="name" placeholder="产品名称">
+
+      <input type="file" id="image" accept="image/*" multiple>
+
+      <input type="text" id="desc" placeholder="产品介绍">
+
+      <select id="category">
+        <option value="护肤">护肤</option>
+        <option value="食品">食品</option>
+        <option value="日用品">日用品</option>
+        <option value="其他">其他</option>
+      </select>
+
+      <button onclick="addProduct()">
+        添加产品
+      </button>
+
+    </div>
+
+    <!-- 产品列表 -->
+    <div id="productList" class="product-list"></div>
+
+  </div>
+
+  <div id="detailModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeDetail()">×</span>
+
+    <img id="detailImage" src="" alt="产品图片">
+
+    <h2 id="detailName"></h2>
+    <p id="detailCategory"></p >
+    <p id="detailDesc"></p >
+  </div>
+</div>
+<div id="imageViewer" class="image-viewer" onclick="closeViewer()">
+  <img id="viewerImg">
+</div>
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h2>编辑产品</h2>
+
+    <input type="hidden" id="editIndex">
+
+    <input type="text" id="editName" placeholder="产品名称">
+
+    <input type="text" id="editDesc" placeholder="产品介绍">
+
+    <select id="editCategory">
+      <option value="护肤">护肤</option>
+      <option value="食品">食品</option>
+      <option value="日用品">日用品</option>
+      <option value="其他">其他</option>
+    </select>
+
+    <button onclick="saveEditProduct()">保存修改</button>
+    <button onclick="closeEditModal()">取消</button>
+  </div>
+</div>
+  <script src="app.js"></script>
+
+</body>
+</html>

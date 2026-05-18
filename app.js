@@ -244,13 +244,14 @@ function saveEditProduct() {
 
   saveProducts();
   renderProducts();
+
   closeEditModal();
 }
 
 document.getElementById("searchInput").addEventListener("input", renderProducts);
 document.getElementById("categoryFilter").addEventListener("change", renderProducts);
 
-renderProducts();
+loadProducts();
 function loginAdmin() {
   const user = document.getElementById("adminUser").value;
   const pass = document.getElementById("adminPass").value;

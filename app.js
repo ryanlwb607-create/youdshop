@@ -1,3 +1,11 @@
+const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
+
+const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
+
+const supabase = window.supabase.createClient(
+  supabaseUrl,
+  supabaseKey
+)
 let isAdmin = localStorage.getItem("isAdmin") === "true";
 let categories =
 JSON.parse(localStorage.getItem("categories")) || [
@@ -31,6 +39,21 @@ let products = JSON.parse(localStorage.getItem("products")) || [
     category: "食品"
   }
 ];
+
+async function loadProducts() {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*');
+
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  products = data || [];
+
+  renderProducts();
+}
 
 saveProducts();
 
@@ -96,6 +119,7 @@ function renderProducts() {
   filteredProducts.forEach((product, index) => {
     const card = document.createElement("div");
     card.className = "product-card";
+    card.onclick = () => openDetail(product);
 
     const imageBox = document.createElement("div");
 imageBox.className = "product-images";
@@ -392,3 +416,17 @@ function addCategory() {
   renderCategories();
   alert("分类添加成功");
 }
+function openDetail(product) {
+  document.getElementById("detailImage").src = product.image;
+  document.getElementById("detailName").textContent = product.name;
+  document.getElementById("detailPrice").textContent = product.price;
+  document.getElementById("detailDesc").textContent = product.desc || "暂无详细说明";
+
+  document.getElementById("detailModal").classList.remove("hidden");
+}
+
+function closeDetail() {
+  document.getElementById("detailModal").classList.add("hidden");
+}
+renderCategories();
+loadProducts();

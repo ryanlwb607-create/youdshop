@@ -9,28 +9,11 @@ if (!product) {
 } else {
   const images = product.images || [product.image];
 
-detailBox.innerHTML = `
-  <h1>${product.name}</h1>
-
-  <div class="slider">
-    <button class="slider-btn left" onclick="prevImage()">‹</button>
-
-    <img id="mainImage" src="${images[0]}" class="slider-img" onclick="showBigImage(this.src)">
-
-    <button class="slider-btn right" onclick="nextImage()">›</button>
-  </div>
-
-  <div class="thumbs">
-    ${images.map((img, i) => `
-      <img src="${img}" class="thumb" onclick="setImage(${i})">
-    `).join("")}
-  </div>
-
-  <p class="category">${product.category}</p >
-  <p>${product.desc}</p >
-
-  <button onclick="window.location.href='index.html'">返回首页</button>
-`;
+document.getElementById("detailImage").src =
+  product.images ? product.images[0] : product.image;
+document.getElementById("detailTitle").innerText = product.name;
+document.getElementById("detailCategory").innerText = product.category;
+document.getElementById("detailDesc").innerText = product.desc;
 }
 function showBigImage(src) {
   const win = window.open("", "_blank");

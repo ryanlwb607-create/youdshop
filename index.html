@@ -6,6 +6,7 @@
   <title>YOUD SHOP</title>
 
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
 
@@ -116,7 +117,18 @@
     <button onclick="closeEditModal()">取消</button>
   </div>
 </div>
-  <script src="app.js"></script>
+
+  <div id="detailModal" class="modal hidden">
+  <div class="modal-content">
+    <button onclick="closeDetail()" class="close-btn">×</button>
+    <img id="detailImage" src="">
+    <h2 id="detailName"></h2>
+    <p id="detailPrice"></p >
+    <p id="detailDesc"></p >
+  </div>
+</div>
+
+<script src="app.js"></script>
 
 </body>
 </html>

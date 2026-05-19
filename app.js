@@ -2,7 +2,7 @@ const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
 
 const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 
-const supabase = window.supabase.createClient(
+const db = window.supabase.createClient(
   supabaseUrl,
   supabaseKey
 )
@@ -127,7 +127,6 @@ imageBox.className = "product-images";
 (product.images || [product.image]).forEach(src => {
   const img = document.createElement("img");
   img.src = src;
-  img.onclick = () => openViewer(src);
   img.alt = product.name;
   img.className = "product-img";
   imageBox.appendChild(img);
@@ -243,13 +242,22 @@ function saveEditProduct() {
     document.getElementById("editCategory").value;
 
   saveProducts();
-  renderProducts();
-
   closeEditModal();
+
+  setTimeout(() => {
+  renderProducts();
+}, 100);
 }
 
-document.getElementById("searchInput").addEventListener("input", renderProducts);
-document.getElementById("categoryFilter").addEventListener("change", renderProducts);
+const searchInput = document.getElementById("searchInput");
+if (searchInput) {
+  searchInput.addEventListener("input", renderProducts);
+}
+
+const categoryFilter = document.getElementById("categoryFilter");
+if (categoryFilter) {
+  categoryFilter.addEventListener("change", renderProducts);
+}
 
 loadProducts();
 function loginAdmin() {
@@ -331,14 +339,7 @@ function renderDetail() {
 if (document.getElementById("detailBox")) {
   renderDetail();
 }
-function openViewer(src) {
-  document.getElementById("viewerImg").src = src;
-  document.getElementById("imageViewer").style.display = "flex";
-}
 
-function closeViewer() {
-  document.getElementById("imageViewer").style.display = "none";
-}
 function updateAdminView() {
 
   const isAdmin = localStorage.getItem("isAdmin") === "true";
@@ -431,3 +432,33 @@ function closeDetail() {
 }
 renderCategories();
 loadProducts();
+function closeDetail() {
+  const detailModal = document.getElementById("detailModal");
+  if (detailModal) {
+    detailModal.style.display = "none";
+  }
+
+  const detailBox = document.getElementById("detailBox");
+  if (detailBox) {
+    detailBox.style.display = "none";
+  }
+
+  const imageViewer = document.getElementById("imageViewer");
+  if (imageViewer) {
+    imageViewer.style.display = "none";
+  }
+}
+function closeDetail() {
+  const detailModal = document.getElementById("detailModal");
+  if (detailModal) detailModal.style.display = "none";
+
+  const imageViewer = document.getElementById("imageViewer");
+  if (imageViewer) imageViewer.style.display = "none";
+}
+window.closeDetail = function () {
+  const detailModal = document.getElementById("detailModal");
+  if (detailModal) detailModal.style.display = "none";
+
+  const imageViewer = document.getElementById("imageViewer");
+  if (imageViewer) imageViewer.style.display = "none";
+};

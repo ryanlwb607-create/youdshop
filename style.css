@@ -620,3 +620,9 @@ body {
   border: none;
   background: none;
 }
+#imageViewer {
+  display: none !important;
+}
+#detailModal {
+  display: none !important;
+}

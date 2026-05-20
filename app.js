@@ -153,7 +153,7 @@ imageBox.className = "product-images";
   isAdmin ? "block" : "none";
 }
 
-function addProduct() {
+async function addProduct() {
   const name = document.getElementById("name").value;
   const imageFiles = document.getElementById("image").files;
   const desc = document.getElementById("desc").value;
@@ -170,7 +170,7 @@ function addProduct() {
   for (let i = 0; i < imageFiles.length; i++) {
     const reader = new FileReader();
 
-    reader.onload = function(e) {
+    reader.onload = async function(e) {
       imageList.push(e.target.result);
       loadedCount++;
 

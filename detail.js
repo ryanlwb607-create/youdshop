@@ -8,7 +8,7 @@ if (!product) {
   const img = product.images?.[0] || product.image || "";
 
   detailBox.innerHTML = `
-    < img src="${img}" class="detail-image">
+    <img src="${img}" class="detail-image">
     <h2>${product.name || ""}</h2>
     <p>分类：${product.category || ""}</p >
     <p>${product.desc || ""}</p >

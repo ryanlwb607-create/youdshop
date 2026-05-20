@@ -142,7 +142,6 @@ imageBox.className = "product-images";
       <h3>${product.name}</h3>
       <div class="category">${product.category}</div>
       <p>${product.desc}</p >
-      <button onclick="openDetail(${index})">查看详情</button>
       <button onclick="toggleFavorite(${index})">
   ${favorites.includes(index) ? "️ 已收藏" : "🤍 收藏"}
 </button>
@@ -334,6 +333,7 @@ function renderDetail() {
 
     <p class="category">${product.category}</p >
     <p>${product.desc}</p >
+    <button>查看详情</button>
 
     <button onclick="history.back()">返回首页</button>
   `;

@@ -50,7 +50,9 @@ async function loadProducts() {
     return;
   }
 
-  products = data || [];
+  if (data && data.length > 0) {
+  products = data;
+}
 
   renderProducts();
 }
@@ -304,8 +306,7 @@ function closeDetail() {
   document.getElementById("detailModal").style.display = "none";
 }
 function openDetail(index) {
-  alert("点到了详情按钮");
-  const product = filteredProducts[index];
+  const product = products[index];
   localStorage.setItem("selectedProduct", JSON.stringify(product));
   window.location.href = "detail.html";
 }

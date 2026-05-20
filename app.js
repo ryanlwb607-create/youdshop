@@ -122,7 +122,10 @@ function renderProducts() {
     window.currentProducts = filteredProducts;
     const card = document.createElement("div");
     card.className = "product-card";
-    card.onclick = () => openDetail(index);
+    card.onclick = (e) => {
+  if (e.target.tagName === "BUTTON") return;
+  openDetail(index);
+};
 
     const imageBox = document.createElement("div");
 imageBox.className = "product-images";

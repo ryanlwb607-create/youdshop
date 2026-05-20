@@ -41,7 +41,7 @@ let products = JSON.parse(localStorage.getItem("products")) || [
 ];
 
 async function loadProducts() {
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from('products')
     .select('*');
 
@@ -119,7 +119,7 @@ function renderProducts() {
   filteredProducts.forEach((product, index) => {
     const card = document.createElement("div");
     card.className = "product-card";
-    card.onclick = () => openDetail(product);
+    card.onclick = () => openDetail(index);
 
     const imageBox = document.createElement("div");
 imageBox.className = "product-images";
@@ -304,7 +304,9 @@ function closeDetail() {
   document.getElementById("detailModal").style.display = "none";
 }
 function openDetail(index) {
-  localStorage.setItem("detailIndex", index);
+  alert("点到了详情按钮");
+  const product = filteredProducts[index];
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
   window.location.href = "detail.html";
 }
 
@@ -312,8 +314,7 @@ function renderDetail() {
   const detailBox = document.getElementById("detailBox");
   if (!detailBox) return;
 
-  const index = localStorage.getItem("detailIndex");
-  const product = products[index];
+  const product = JSON.parse(localStorage.getItem("selectedProduct"));
 
   if (!product) {
     detailBox.innerHTML = "<p>没有找到产品</p >";
@@ -417,14 +418,6 @@ function addCategory() {
 
   renderCategories();
   alert("分类添加成功");
-}
-function openDetail(product) {
-  document.getElementById("detailImage").src = product.image;
-  document.getElementById("detailName").textContent = product.name;
-  document.getElementById("detailPrice").textContent = product.price;
-  document.getElementById("detailDesc").textContent = product.desc || "暂无详细说明";
-
-  document.getElementById("detailModal").classList.remove("hidden");
 }
 
 function closeDetail() {

@@ -363,20 +363,19 @@ if (document.getElementById("productList")) {
 }
 
 function toggleFavorite(index) {
+  let favorites =
+    JSON.parse(localStorage.getItem("favorites")) || [];
 
   if (favorites.includes(index)) {
-
     favorites = favorites.filter(i => i !== index);
-
   } else {
-
     favorites.push(index);
-
   }
 
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-
-renderCategories();
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(favorites)
+  );
 
   renderProducts();
 }

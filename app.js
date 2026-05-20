@@ -148,7 +148,7 @@ imageBox.className = "product-images";
   </button>
 
   <button onclick="toggleFavorite(${index})">
-    ${favorites.includes(index) ? "已收藏" : "收藏"}
+    ${favorites.includes(index) ? "取消收藏" : "收藏"}
   </button>
 
   ${

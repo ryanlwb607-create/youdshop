@@ -139,18 +139,27 @@ imageBox.className = "product-images";
     info.className = "product-info";
 
     info.innerHTML = `
-      <h3>${product.name}</h3>
-      <div class="category">${product.category}</div>
-      <p>${product.desc}</p >
-      <button onclick="toggleFavorite(${index})">
-      <button onclick="openDetail(${index})">查看详情</button>
-  ${favorites.includes(index) ? "️ 已收藏" : "🤍 收藏"}
-</button>
-      ${isAdmin ? `
-  <button onclick="editProduct(${index})">编辑</button>
-  <button class="delete-btn" onclick="deleteProduct(${index})">删除</button>
-` : ""}
-    `;
+  <h3>${product.name}</h3>
+  <div class="category">${product.category}</div>
+  <p>${product.desc}</p >
+
+  <button onclick="openDetail(${index})">
+    查看详情
+  </button>
+
+  <button onclick="toggleFavorite(${index})">
+    ${favorites.includes(index) ? "已收藏" : "收藏"}
+  </button>
+
+  ${
+    isAdmin
+      ? `
+      <button onclick="editProduct(${index})">编辑</button>
+      <button class="delete-btn" onclick="deleteProduct(${index})">删除</button>
+    `
+      : ""
+  }
+`;
 
     card.appendChild(imageBox);
     card.appendChild(info);

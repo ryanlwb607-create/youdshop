@@ -119,6 +119,7 @@ function renderProducts() {
   });
 
   filteredProducts.forEach((product, index) => {
+    window.currentProducts = filteredProducts;
     const card = document.createElement("div");
     card.className = "product-card";
     card.onclick = () => openDetail(index);
@@ -306,7 +307,7 @@ function closeDetail() {
   document.getElementById("detailModal").style.display = "none";
 }
 function openDetail(index) {
-  const product = products[index];
+  const product = window.currentProducts[index];
   localStorage.setItem("selectedProduct", JSON.stringify(product));
   window.location.href = "detail.html";
 }

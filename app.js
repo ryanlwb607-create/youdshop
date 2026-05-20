@@ -389,7 +389,7 @@ function toggleFavorite(index) {
     JSON.stringify(favorites)
   );
 
-  renderProducts();
+  location.reload();
 }
 function addFavorite(index) {
     let favorites =

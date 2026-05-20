@@ -143,6 +143,7 @@ imageBox.className = "product-images";
       <div class="category">${product.category}</div>
       <p>${product.desc}</p >
       <button onclick="toggleFavorite(${index})">
+      <button onclick="openDetail(${index})">查看详情</button>
   ${favorites.includes(index) ? "️ 已收藏" : "🤍 收藏"}
 </button>
       ${isAdmin ? `

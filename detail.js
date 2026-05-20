@@ -1,9 +1,3 @@
-const products = JSON.parse(localStorage.getItem("products")) || [];
-
-const detailBox = document.getElementById("detailBox");
-const index = localStorage.getItem("detailIndex");
-const product = products[index];
-
 if (!product) {
   detailBox.innerHTML = "<p>没有找到产品</p >";
 } else {

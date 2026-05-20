@@ -25,20 +25,7 @@ const banners = [
 
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let bannerIndex = 0;
-let products = JSON.parse(localStorage.getItem("products")) || [
-  {
-    name: "示例产品A",
-    image: "https://picsum.photos/400/300?random=1",
-    desc: "这是一个产品介绍示例。",
-    category: "护肤"
-  },
-  {
-    name: "示例产品B",
-    image: "https://picsum.photos/400/300?random=2",
-    desc: "这里可以写产品的详细说明。",
-    category: "食品"
-  }
-];
+let products = [];
 
 async function loadProducts() {
   const { data, error } = await db
@@ -55,12 +42,6 @@ async function loadProducts() {
 }
 
   renderProducts();
-}
-
-saveProducts();
-
-function saveProducts() {
-  localStorage.setItem("products", JSON.stringify(products));
 }
 
 function renderCategories() {
@@ -194,19 +175,27 @@ function addProduct() {
       loadedCount++;
 
       if (loadedCount === imageFiles.length) {
-        products.push({
-          name: name,
-          images: imageList,
-          image: imageList[0],
-          desc: desc,
-          category: category
-        });
+        const newProduct = {
+  name: name,
+  images: imageList,
+  image: imageList[0],
+  desc: desc,
+  category: category
+};
 
-        saveProducts();
+const { error } = await db
+  .from("products")
+  .insert([newProduct]);
 
-        saveProducts();
+if (error) {
+  console.log(error);
+  alert("上传失败");
+  return;
+}
+
+await loadProducts();
+
         clearForm();
-        renderProducts();
       }
     };
 
@@ -223,7 +212,6 @@ function clearForm() {
 function deleteProduct(index) {
   if (confirm("确定要删除这个产品吗？")) {
     products.splice(index, 1);
-    saveProducts();
     renderProducts();
   }
 }
@@ -256,7 +244,6 @@ function saveEditProduct() {
   products[index].category =
     document.getElementById("editCategory").value;
 
-  saveProducts();
   closeEditModal();
 
   setTimeout(() => {

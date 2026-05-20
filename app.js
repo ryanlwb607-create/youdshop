@@ -317,6 +317,7 @@ function renderDetail() {
   if (!detailBox) return;
 
   const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  console.log(product);
 
   if (!product) {
     detailBox.innerHTML = "<p>没有找到产品</p >";

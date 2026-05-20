@@ -28,8 +28,13 @@ function showBigImage(src) {
 
   win.document.body.appendChild(img);
 }
+const product =
+  JSON.parse(localStorage.getItem("selectedProduct")) || {};
+
 let currentIndex = 0;
-const imageList = product.images || [product.image];
+
+const imageList =
+  product.images || [product.image || ""];
 
 function setImage(index) {
   currentIndex = index;

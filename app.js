@@ -168,7 +168,7 @@ async function addProduct() {
   const imageList = [];
   let loadedCount = 0;
 
-  for (let i = 0; i < imageFiles.length; i++) {
+  for (let i = 0; i <imageFiles.length; i++) {
     const reader = new FileReader();
 
     reader.onload = async function(e) {

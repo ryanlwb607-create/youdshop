@@ -216,10 +216,10 @@ async function deleteProduct(index) {
     const product = window.currentProducts[index];
 
     console.log("要删除的产品：", product);
-    
+
     if (!confirm("确定要删除这个产品吗？")) return;
 
-    const { error } = await supabase
+    const { error } = await db
         .from("products")
         .delete()
         .eq("id", product.id);

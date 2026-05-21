@@ -320,7 +320,6 @@ function renderDetail() {
   const savedProduct = localStorage.getItem("selectedProduct");
   const product = savedProduct ? JSON.parse(savedProduct) : null;
   console.log(product);
-  alert(JSON.stringify(product));
 
   if (!product) {
     detailBox.innerHTML = "<p>没有找到产品</p >";

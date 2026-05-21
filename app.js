@@ -329,9 +329,15 @@ function renderDetail() {
 
  detailBox.innerHTML = `
     <div class="detail-card">
-        <img src="${product.image || product.images?.[0] || ""}" class="detail-image">
 
-        <h1>${product.title || product.name || "未命名产品"}</h1>
+        < img 
+            src="${product.image || product.images?.[0] || ''}" 
+            class="detail-image"
+        >
+
+        <h1>
+            ${product.title || product.name || "未命名产品"}
+        </h1>
 
         <h2 style="color:red;">
             ¥${product.price || "未设置价格"}
@@ -340,6 +346,11 @@ function renderDetail() {
         <p>
             ${product.description || product.desc || "暂无介绍"}
         </p >
+
+        <button onclick="history.back()">
+            返回首页
+        </button>
+
     </div>
 `;
 }

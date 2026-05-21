@@ -121,11 +121,11 @@ imageBox.className = "product-images";
     info.className = "product-info";
 
     info.innerHTML = `
-  <h3>${product.title || "未命名产品"}</h3>
+  <h3>${product.title || product.name || "未命名产品"}</h3>
   <div class="category">${product.category}</div>
   <p class="price">¥${product.price || "未设置价格"}</p >
 
-  <p>${product.description || "暂无介绍"}</p >
+  <p>${product.description || product.desc || "暂无介绍"}</p >
 
   <button onclick="openDetail(${index})">
     查看详情

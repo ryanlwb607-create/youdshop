@@ -329,7 +329,7 @@ function renderDetail() {
  detailBox.innerHTML = `
     <div class="detail-card">
 
-        < img 
+       <img 
             src="${product.image || product.images?.[0] || ''}" 
             class="detail-image"
         >

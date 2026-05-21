@@ -2,7 +2,7 @@ const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
 
 const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 
-const db = window.supabase.createClient(
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
   supabaseUrl,
   supabaseKey
 )
@@ -319,7 +319,8 @@ function renderDetail() {
   const detailBox = document.getElementById("detailBox");
   if (!detailBox) return;
 
-  const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  const savedProduct = localStorage.getItem("selectedProduct");
+  const product = savedProduct ? JSON.parse(savedProduct) : null;
   console.log(product);
   alert(JSON.stringify(product));
 

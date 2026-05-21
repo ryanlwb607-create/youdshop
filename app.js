@@ -123,11 +123,11 @@ imageBox.className = "product-images";
     info.className = "product-info";
 
     info.innerHTML = `
-  <h3>${product.name}</h3>
+  <h3>${product.title || "未命名产品"}</h3>
   <div class="category">${product.category}</div>
   <p class="price">¥${product.price || "未设置价格"}</p >
 
-  <p>${product.desc}</p >
+  <p>${product.description || "暂无介绍"}</p >
 
   <button onclick="openDetail(${index})">
     查看详情
@@ -327,21 +327,21 @@ function renderDetail() {
     return;
   }
 
-  detailBox.innerHTML = `
-    <h1>${product.name}</h1>
+ detailBox.innerHTML = `
+    <div class="detail-card">
+        <img src="${product.image || product.images?.[0] || ""}" class="detail-image">
 
-    <div class="detail-images">
-      ${(product.images || [product.image]).map(img => `
-        < img src="${img}" class="detail-img">
-      `).join("")}
+        <h1>${product.title || product.name || "未命名产品"}</h1>
+
+        <h2 style="color:red;">
+            ¥${product.price || "未设置价格"}
+        </h2>
+
+        <p>
+            ${product.description || product.desc || "暂无介绍"}
+        </p >
     </div>
-
-    <p class="category">${product.category}</p >
-    <p>${product.desc}</p >
-    <button>查看详情</button>
-
-    <button onclick="history.back()">返回首页</button>
-  `;
+`;
 }
 
 if (document.getElementById("detailBox")) {

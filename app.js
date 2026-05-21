@@ -125,6 +125,8 @@ imageBox.className = "product-images";
     info.innerHTML = `
   <h3>${product.name}</h3>
   <div class="category">${product.category}</div>
+  <p class="price">¥${product.price || "未设置价格"}</p >
+
   <p>${product.desc}</p >
 
   <button onclick="openDetail(${index})">

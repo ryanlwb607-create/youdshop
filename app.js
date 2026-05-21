@@ -2,7 +2,7 @@ const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
 
 const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const db = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let isAdmin = localStorage.getItem("isAdmin") === "true";
 let categories =

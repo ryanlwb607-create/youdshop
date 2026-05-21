@@ -211,11 +211,25 @@ function clearForm() {
   document.getElementById("desc").value = "";
 }
 
-function deleteProduct(index) {
-  if (confirm("确定要删除这个产品吗？")) {
+async function deleteProduct(index) {
+
+    const product = products[index];
+
+    if (!confirm("确定要删除这个产品吗？")) return;
+
+    const { error } = await supabase
+        .from("products")
+        .delete()
+        .eq("id", product.id);
+
+    if (error) {
+        alert("删除失败：" + error.message);
+        return;
+    }
+
     products.splice(index, 1);
+
     renderProducts();
-  }
 }
 
 function editProduct(index) {

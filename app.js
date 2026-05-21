@@ -213,7 +213,7 @@ function clearForm() {
 
 async function deleteProduct(index) {
 
-    const product = products[index];
+    const product = window.currentProducts[index];
 
     if (!confirm("确定要删除这个产品吗？")) return;
 

@@ -3,9 +3,7 @@ const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
 const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-  supabaseUrl,
-  supabaseKey
-)
+
 let isAdmin = localStorage.getItem("isAdmin") === "true";
 let categories =
 JSON.parse(localStorage.getItem("categories")) || [

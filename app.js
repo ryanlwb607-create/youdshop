@@ -247,24 +247,44 @@ function closeEditModal() {
   document.getElementById("editModal").style.display = "none";
 }
 
-function saveEditProduct() {
+async function saveEditProduct() {
+  alert("保存按钮点到了");
+
   const index =
     document.getElementById("editIndex").value;
 
-  products[index].name =
+  const product = products[index];
+  console.log(product);
+
+  const newName =
     document.getElementById("editName").value;
 
-  products[index].desc =
+  const newDesc =
     document.getElementById("editDesc").value;
 
-  products[index].category =
+  const newCategory =
     document.getElementById("editCategory").value;
+
+  const { error } = await db
+    .from("products")
+    .update({
+      name: newName,
+      desc: newDesc,
+      category: newCategory
+    })
+    .eq("id", product.id);
+
+  if (error) {
+    console.error("编辑失败：", error);
+    alert("编辑失败");
+    return;
+  }
+
+  alert("编辑成功");
 
   closeEditModal();
 
-  setTimeout(() => {
-  renderProducts();
-}, 100);
+  await loadProducts();
 }
 
 const searchInput = document.getElementById("searchInput");

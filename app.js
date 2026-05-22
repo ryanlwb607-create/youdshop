@@ -248,13 +248,11 @@ function closeEditModal() {
 }
 
 async function saveEditProduct() {
-  alert("保存按钮点到了");
 
   const index =
     document.getElementById("editIndex").value;
 
   const product = products[index];
-  console.log(product);
 
   const newName =
     document.getElementById("editName").value;

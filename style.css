@@ -125,7 +125,7 @@ button:hover {
   font-size: 28px;
   cursor: pointer;
 }
-@media (max-width: 600px) {
+@media (max-width: 600px){
   .container {
     width: 95%;
     padding: 10px;
@@ -656,5 +656,23 @@ body {
     padding: 6px 8px;
     margin-top: 6px;
   }
+  .detail-images {
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-img {
+  width: 90%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.detail-container {
+  padding: 10px;
+  text-align: center;
+}
 
 }

@@ -661,7 +661,9 @@ body {
   align-items: center;
 }
 
-.detail-img {
+.detail-img,
+.detail-images img,
+.detail-container img {
   width: 90%;
   max-width: 320px;
   height: auto;

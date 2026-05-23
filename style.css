@@ -685,12 +685,14 @@ body {
   margin: 0 auto;
   padding: 15px;
   box-sizing: border-box;
+  gap: 10px !important;
+  overflow: hidden;
 }
 
 .detail-image {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
+  width: 100% !important;
+  max-width: 280px !important;
+  height: auto !important;
   object-fit: contain;
   margin: 0 auto 15px auto;
   display: block;

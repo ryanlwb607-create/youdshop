@@ -677,4 +677,35 @@ body {
   text-align: center;
 }
 
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.detail-image {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 15px auto;
+  display: block;
+}
+
+.detail-card h1,
+.detail-card h2,
+.detail-card p {
+  text-align: center;
+}
+
+.detail-card button {
+  width: 100%;
+  max-width: 220px;
+  margin-top: 12px;
+}
+
 }

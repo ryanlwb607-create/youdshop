@@ -264,13 +264,14 @@ async function saveEditProduct() {
     document.getElementById("editCategory").value;
 
   const { error } = await db
-    .from("products")
-    .update({
-      name: newName,
-      desc: newDesc,
-      category: newCategory
-    })
-    .eq("id", product.id);
+  .from("products")
+  .update({
+    name: newName,
+    desc: newDesc,
+    category: newCategory,
+    image: product.image
+  })
+  .eq("id", product.id);
 
   if (error) {
     console.error("编辑失败：", error);

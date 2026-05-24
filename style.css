@@ -724,7 +724,7 @@ body {
 
 .product-card img {
   width: 100%;
-  height: 220px;
+  height: 220px !important;
   object-fit: contain;
   border-radius: 12px;
   background: #fff;
@@ -762,8 +762,9 @@ body {
 
   .product-card img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 220px !important;
+    object-fit: contain;
+    background: #fff;
     border-radius: 10px;
   }
 
@@ -807,8 +808,9 @@ body {
 
   .product-img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 220px !important;
+    object-fit: contain;
+    background: #fff;
   }
 
   .product-card h3 {
@@ -827,4 +829,14 @@ body {
     padding: 6px;
   }
 
+}
+@media (max-width: 768px) {
+  #productList .product-card img,
+  #productList .product-img,
+  #productList .product-images img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: contain !important;
+    background: #fff;
+  }
 }

@@ -239,7 +239,7 @@ function editProduct(index) {
   document.getElementById("editName").value = product.name;
   document.getElementById("editDesc").value = product.desc;
   document.getElementById("editCategory").value = product.category;
-
+  document.getElementById("editPrice").value = product.price || "";
   document.getElementById("editModal").style.display = "block";
 }
 

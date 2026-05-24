@@ -263,13 +263,17 @@ async function saveEditProduct() {
   const newCategory =
     document.getElementById("editCategory").value;
 
+  const newPrice =
+  document.getElementById("editPrice").value;
+
   const { error } = await db
   .from("products")
   .update({
     name: newName,
     desc: newDesc,
     category: newCategory,
-    image: product.image
+    image: product.image,
+    price: newPrice
   })
   .eq("id", product.id);
 

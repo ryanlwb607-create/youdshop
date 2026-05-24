@@ -285,9 +285,9 @@ async function saveEditProduct() {
 
   alert("编辑成功");
 
-  closeEditModal();
-
   await loadProducts();
+  
+  closeEditModal();
 }
 
 const searchInput = document.getElementById("searchInput");

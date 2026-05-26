@@ -809,6 +809,26 @@ body {
     font-size: 12px;
     padding: 6px;
   }
+  
+  .detail-btn {
+  background: #1677ff;
+  color: white;
+}
+
+.fav-btn {
+  background: #ff9500;
+  color: white;
+}
+
+.edit-btn {
+  background: #34c759;
+  color: white;
+}
+
+.delete-btn {
+  background: #ff3b30;
+  color: white;
+}
 
 }
 @media (max-width: 768px) {

@@ -109,11 +109,14 @@ function renderProducts() {
     const imageBox = document.createElement("div");
 imageBox.className = "product-images";
 
-(product.images || [product.image]).forEach(src => {
+(product.images || [product.image]).forEach((src, index)=> {
   const img = document.createElement("img");
   img.src = src;
   img.alt = product.name;
   img.className = "product-img";
+  if(index !== 0){
+  img.style.display = "none";
+  }
   imageBox.appendChild(img);
 });
 

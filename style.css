@@ -803,7 +803,7 @@ body {
   .category {
     font-size: 12px;
   }
-  
+
   .product-card p {
   max-height: 90px;
   overflow: hidden;
@@ -853,5 +853,6 @@ body {
     height: 220px !important;
     object-fit: contain !important;
     background: #fff;
+    border-radius: 12px;
   }
 }

@@ -803,6 +803,12 @@ body {
   .category {
     font-size: 12px;
   }
+  
+  .product-card p {
+  max-height: 90px;
+  overflow: hidden;
+  line-height: 1.6;
+}
 
   .product-card button {
     width: 100%;

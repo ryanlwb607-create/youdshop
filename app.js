@@ -130,19 +130,19 @@ imageBox.className = "product-images";
 
   <p>${product.description || product.desc || "暂无介绍"}</p >
 
-  <botton onclick="openDetail(${index})">
+  <button class="detail-btn" onclick="openDetail(${index})">
   查看详情
-  </button>
+</button>
 
-  <botton onclick="toggleFavorite(${index})">
-    ${favorites.includes(index) ? "取消收藏" : "收藏"}
-  </button>
+<button class="fav-btn" onclick="toggleFavorite(${index})">
+  ${favorites.includes(index) ? "取消收藏" : "收藏"}
+</button>
 
-  ${
-    isAdmin
-      ? `
-  <botton onclick="editProduct(${index})">编辑</botton>
-  <button class="delete-btn" onclick="deleteProduct(${index})">删除</button>
+${
+  isAdmin
+    ? `
+<button class="edit-btn" onclick="editProduct(${index})">编辑</button>
+<button class="delete-btn" onclick="deleteProduct(${index})">删除</button>
     `
       : ""
   }

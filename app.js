@@ -351,7 +351,7 @@ function closeDetail() {
 }
 function openDetail(index) {
   const product = window.currentProducts[index];
-  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  localStorage.setItem("selectedProductId", product.id);
   window.location.href = "detail.html";
 }
 

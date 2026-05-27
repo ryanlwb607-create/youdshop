@@ -19,3 +19,33 @@ detailBox.innerHTML = `
   <button>立即咨询</button>
   `;
 }
+
+let currentImageIndex = 0;
+
+function nextImage() {
+  const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  const images = product.images || [product.image];
+
+  currentImageIndex++;
+
+  if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+
+  document.getElementById("sliderImage").src =
+    images[currentImageIndex];
+}
+
+function prevImage() {
+  const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  const images = product.images || [product.image];
+
+  currentImageIndex--;
+
+  if (currentImageIndex < 0) {
+    currentImageIndex = images.length - 1;
+  }
+
+  document.getElementById("sliderImage").src =
+    images[currentImageIndex];
+}

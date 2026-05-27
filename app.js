@@ -371,10 +371,16 @@ function renderDetail() {
  detailBox.innerHTML = `
     <div class="detail-card">
 
-      <div class="detail-images">
-        ${(product.images || [product.image]).map(img => `
-          <img src="${img}" class="detail-image">
-        `).join("")}
+      <div class="detail-slider">
+        <button class="slider-btn" onclick="prevImage()">‹</button>
+
+        <img
+          id="sliderImage"
+          src="${(product.images || [product.image])[0]}"
+          class="detail-image"
+        >
+
+        <button class="slider-btn" onclick="nextImage()">›</button>
       </div>
 
         <h1>

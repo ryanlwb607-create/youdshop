@@ -132,7 +132,7 @@ imageBox.className = "product-images";
 
   <p>${product.description || product.desc || "暂无介绍"}</p >
 
-  <button class="detail-btn" onclick="openDetail(${index})">
+  <button class="detail-btn" onclick="openDetail('${product.id}')">
   查看详情
 </button>
 
@@ -349,9 +349,8 @@ function showDetail(index) {
 function closeDetail() {
   document.getElementById("detailModal").style.display = "none";
 }
-function openDetail(index) {
-  const product = window.currentProducts[index];
-  localStorage.setItem("selectedProductId", product.id);
+function openDetail(id) {
+  localStorage.setItem("selectedProductId", id);
   window.location.href = "detail.html";
 }
 

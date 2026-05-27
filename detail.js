@@ -22,7 +22,9 @@ detailBox.innerHTML = `
 
 let currentImageIndex = 0;
 
-function nextImage() {
+let currentImageIndex = 0;
+
+window.nextImage = function () {
   const product = JSON.parse(localStorage.getItem("selectedProduct"));
   const images = product.images || [product.image];
 
@@ -32,11 +34,10 @@ function nextImage() {
     currentImageIndex = 0;
   }
 
-  document.getElementById("sliderImage").src =
-    images[currentImageIndex];
-}
+  document.getElementById("sliderImage").src = images[currentImageIndex];
+};
 
-function prevImage() {
+window.prevImage = function () {
   const product = JSON.parse(localStorage.getItem("selectedProduct"));
   const images = product.images || [product.image];
 
@@ -46,6 +47,5 @@ function prevImage() {
     currentImageIndex = images.length - 1;
   }
 
-  document.getElementById("sliderImage").src =
-    images[currentImageIndex];
-}
+  document.getElementById("sliderImage").src = images[currentImageIndex];
+};

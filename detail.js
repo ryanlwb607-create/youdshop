@@ -49,3 +49,4 @@ window.prevImage = function () {
 
   document.getElementById("sliderImage").src = images[currentImageIndex];
 };
+//test save

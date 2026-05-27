@@ -97,8 +97,10 @@ function renderProducts() {
     return matchSearch && matchCategory;
   });
 
+  window.currentProducts = filteredProducts;
+  console.log("当前页面产品：", window.currentProducts);
+
   filteredProducts.forEach((product, index) => {
-    window.currentProducts = filteredProducts;
     const card = document.createElement("div");
     card.className = "product-card";
     card.onclick = (e) => {
@@ -369,10 +371,11 @@ function renderDetail() {
  detailBox.innerHTML = `
     <div class="detail-card">
 
-       <img 
-            src="${product.image || product.images?.[0] || ''}" 
-            class="detail-image"
-        >
+      <div class="detail-images">
+        ${(product.images || [product.image]).map(img => `
+          <img src="${img}" class="detail-image">
+        `).join("")}
+      </div>
 
         <h1>
             ${product.title || product.name || "未命名产品"}

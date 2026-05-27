@@ -1,6 +1,21 @@
-const product = JSON.parse(localStorage.getItem("selectedProduct") || "null");
+const productId = localStorage.getItem("selectedProductId");
+let product = null;
 
 const detailBox = document.getElementById("detailBox");
+
+async function loadProduct() {
+  const { data, error } = await db
+    .from("products")
+    .select("*")
+    .eq("id", productId)
+    .single();
+
+  if (error || !data) {
+    detailBox.innerHTML = "<p>没有找到产品</p >";
+    return;
+  }
+
+  product = data;
 
 if (!product) {
   detailBox.innerHTML = "<p>没有找到产品</p >";
@@ -25,7 +40,7 @@ let currentImageIndex = 0;
 let currentImageIndex = 0;
 
 window.nextImage = function () {
-  const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  const images = product.images || [product.image];
   const images = product.images || [product.image];
 
   currentImageIndex++;
@@ -38,7 +53,7 @@ window.nextImage = function () {
 };
 
 window.prevImage = function () {
-  const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  const images = product.images || [product.image];
   const images = product.images || [product.image];
 
   currentImageIndex--;
@@ -49,4 +64,7 @@ window.prevImage = function () {
 
   document.getElementById("sliderImage").src = images[currentImageIndex];
 };
-//test save
+
+}
+
+loadProduct();

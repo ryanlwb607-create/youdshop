@@ -404,10 +404,6 @@ function renderDetail() {
 `;
 }
 
-if (document.getElementById("detailBox")) {
-  renderDetail();
-}
-
 function updateAdminView() {
 
   const isAdmin = localStorage.getItem("isAdmin") === "true";

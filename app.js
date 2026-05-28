@@ -25,7 +25,7 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let bannerIndex = 0;
 let products = [];
 
-async function loadProducts() {}
+async function loadProducts() {
   const { data, error } = await db
     .from('products')
     .select('*');
@@ -39,6 +39,7 @@ async function loadProducts() {}
 
 if (document.getElementById("productList")) {
   renderProducts();
+}
 }
 
 function renderCategories() {

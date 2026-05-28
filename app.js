@@ -35,10 +35,9 @@ async function loadProducts() {
     return;
   }
 
-  if (data && data.length > 0) {
-  products = data;
-}
+  products = data || [];
 
+if (document.getElementById("productList")) {
   renderProducts();
 }
 

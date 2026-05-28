@@ -489,8 +489,18 @@ function addCategory() {
 function closeDetail() {
   document.getElementById("detailModal").classList.add("hidden");
 }
+
 renderCategories();
-loadProducts();
+
+if (document.getElementById("productList")) {
+  loadProducts();
+}
+
+if (document.getElementById("detailBox")) {
+  loadProducts().then(() => {
+    renderDetail();
+  });
+}
 function closeDetail() {
   const detailModal = document.getElementById("detailModal");
   if (detailModal) {

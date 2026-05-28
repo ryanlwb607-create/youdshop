@@ -132,7 +132,7 @@ imageBox.className = "product-images";
 
   <p>${product.description || product.desc || "暂无介绍"}</p >
 
-  <button class="detail-btn" onclick='openDetail(${JSON.stringify(product)})'>
+  <button class="detail-btn" onclick='openDetail("${product.id}")'>
   查看详情
 </button>
 
@@ -349,17 +349,19 @@ function showDetail(index) {
 function closeDetail() {
   document.getElementById("detailModal").style.display = "none";
 }
-function openDetail(product) {
-  localStorage.setItem("selectedProduct", JSON.stringify(product));
-  window.location.href = "detail.html";
+function openDetail(id) {
+  window.location.href = `detail.html?id=${id}`;
 }
 
 function renderDetail() {
   const detailBox = document.getElementById("detailBox");
   if (!detailBox) return;
 
-  const savedProduct = localStorage.getItem("selectedProduct");
-  const product = savedProduct ? JSON.parse(savedProduct) : null;
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  const product = products.find(p => String(p.id) === String(id));
+
   console.log(product);
 
   if (!product) {

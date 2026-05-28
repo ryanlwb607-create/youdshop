@@ -25,7 +25,7 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let bannerIndex = 0;
 let products = [];
 
-async function loadProducts() {
+async function loadProducts() {}
   const { data, error } = await db
     .from('products')
     .select('*');
@@ -516,17 +516,3 @@ function closeDetail() {
     imageViewer.style.display = "none";
   }
 }
-function closeDetail() {
-  const detailModal = document.getElementById("detailModal");
-  if (detailModal) detailModal.style.display = "none";
-
-  const imageViewer = document.getElementById("imageViewer");
-  if (imageViewer) imageViewer.style.display = "none";
-}
-window.closeDetail = function () {
-  const detailModal = document.getElementById("detailModal");
-  if (detailModal) detailModal.style.display = "none";
-
-  const imageViewer = document.getElementById("imageViewer");
-  if (imageViewer) imageViewer.style.display = "none";
-};

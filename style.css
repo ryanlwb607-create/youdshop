@@ -841,9 +841,9 @@ body {
 
   #productList {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  padding: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 8px;
 }
 
   #productList .product-card img,
@@ -855,6 +855,21 @@ body {
     background: #fff;
     border-radius: 12px;
   }
+  #productList .product-card {
+  padding: 8px;
+}
+
+#productList .product-card h3 {
+  font-size: 14px;
+}
+
+#productList .product-card p {
+  font-size: 12px;
+}
+
+#productList .price {
+  font-size: 16px;
+}
 }
 
 .detail-slider{

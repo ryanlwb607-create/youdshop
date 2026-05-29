@@ -104,11 +104,10 @@ function renderProducts() {
     const card = document.createElement("div");
     card.className = "product-card";
     card.onclick = (e) => {
-  if (e.target.tagName === "BUTTON") return;
+  if (e.target.closest("button")) return;
 
-  const img = e.target.closest("img");
-  if (img) {
-    openImageViewer(img.src);
+  if (e.target.classList.contains("product-img")) {
+    openImageViewer(e.target.src);
   }
 };
 
@@ -541,4 +540,19 @@ function closeImageViewer() {
   if (viewer) {
     viewer.style.display = "none";
   }
+}
+
+function openImageViewer(src) {
+  const viewer = document.createElement("div");
+  viewer.className = "image-viewer";
+  viewer.innerHTML = `
+    <div class="image-viewer-bg"></div>
+    <img src="${src}" class="image-viewer-img">
+  `;
+
+  viewer.onclick = function () {
+    viewer.remove();
+  };
+
+  document.body.appendChild(viewer);
 }

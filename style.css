@@ -902,3 +902,20 @@ body {
   max-height: 90%;
   border-radius: 12px;
 }
+
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-viewer-img {
+  max-width: 92%;
+  max-height: 88%;
+  border-radius: 12px;
+  background: white;
+}

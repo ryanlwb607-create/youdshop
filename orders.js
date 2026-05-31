@@ -1,10 +1,18 @@
 const orders = JSON.parse(localStorage.getItem("orders")) || [];
 const orderList = document.getElementById("orderList");
+const totalAmount = orders.reduce((sum, order) => sum + Number(order.total || 0), 0);
+
+orderList.innerHTML = `
+    <div style="padding:12px;margin:12px;border:1px solid #ddd;">
+        <h3>订单统计</h3>
+        <p>订单数量：${orders.length}</p >
+        <p>订单总金额：¥${totalAmount}</p >
+    </div>
+`;
 
 if (orders.length === 0) {
-  orderList.innerHTML = "<p>暂无订单</p >";
+    orderList.innerHTML += "<p>暂无订单</p >";
 } else {
-  orderList.innerHTML = "";
 
   orders.forEach((order,index) => {
     orderList.innerHTML += `

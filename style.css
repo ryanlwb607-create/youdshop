@@ -968,4 +968,11 @@ body {
     font-size: 11px !important;
     line-height: 1.4;
   }
+
+  #productList.product-list .product-card p {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 4 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
 }

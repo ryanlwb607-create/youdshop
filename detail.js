@@ -59,7 +59,6 @@ let currentImageIndex = 0;
 
 window.nextImage = function () {
   const images = product.images || [product.image];
-  const images = product.images || [product.image];
 
   currentImageIndex++;
 
@@ -71,7 +70,6 @@ window.nextImage = function () {
 };
 
 window.prevImage = function () {
-  const images = product.images || [product.image];
   const images = product.images || [product.image];
 
   currentImageIndex--;

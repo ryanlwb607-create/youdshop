@@ -88,6 +88,7 @@ function submitOrder() {
   }
 
   const orderNo = generateOrderNo();
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 orders.push({

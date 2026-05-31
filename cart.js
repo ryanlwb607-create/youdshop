@@ -66,3 +66,28 @@ function clearCart() {
 }
 
 renderCart();
+
+function generateOrderNo() {
+  const now = new Date();
+
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  const h = String(now.getHours()).padStart(2, "0");
+  const min = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  const random = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+
+  return `YD${y}${m}${d}${h}${min}${s}${random}`;
+}
+
+function submitOrder() {
+  if (cart.length === 0) {
+    alert("购物车是空的");
+    return;
+  }
+
+  const orderNo = generateOrderNo();
+
+  alert("订单提交成功！\n订单号:" + orderNo);
+}

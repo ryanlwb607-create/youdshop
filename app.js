@@ -143,6 +143,21 @@ imageBox.className = "product-images";
   ${favorites.includes(index) ? "取消收藏" : "收藏"}
 </button>
 
+<input
+  type="number"
+  min="1"
+  value="1"
+  class="qty-input"
+  id="qty-${index}"
+>
+
+<button
+  class="cart-btn"
+  onclick="addToCart(${index})"
+>
+加入购物车
+</button>
+
 ${
   isAdmin
     ? `
@@ -159,6 +174,30 @@ ${
   });
   document.querySelector(".admin-only").style.display =
   isAdmin ? "block" : "none";
+}
+
+let cart = [];
+
+function addToCart(index) {
+  const product = window.currentProducts[index];
+  const qtyInput = document.getElementById(`qty-${index}`);
+  const quantity = Number(qtyInput.value) || 1;
+
+  const existing = cart.find(item => item.id === product.id);
+
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: Number(product.price) || 0,
+      quantity: quantity
+    });
+  }
+
+  alert("已加入购物车");
+  console.log("当前购物车：", cart);
 }
 
 async function addProduct() {

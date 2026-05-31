@@ -176,41 +176,54 @@ async function addProduct() {
   const imageList = [];
   let loadedCount = 0;
 
-  for (let i = 0; i <imageFiles.length; i++) {
-    const reader = new FileReader();
+  for (let i = 0; i < imageFiles.length; i++) {
+  new Compressor(imageFiles[i], {
+    quality: 0.7,
+    maxWidth: 900,
+    maxHeight: 900,
+    convertSize: 500000,
 
-    reader.onload = async function(e) {
-      imageList.push(e.target.result);
-      loadedCount++;
+    success(result) {
+      const reader = new FileReader();
 
-      if (loadedCount === imageFiles.length) {
-        const newProduct = {
-  name: name,
-  price:price,
-  images: imageList,
-  image: imageList[0],
-  desc: desc,
-  category: category
-};
+      reader.onload = async function(e) {
+        imageList.push(e.target.result);
+        loadedCount++;
 
-const { error } = await db
-  .from("products")
-  .insert([newProduct]);
+        if (loadedCount === imageFiles.length) {
+          const newProduct = {
+            name: name,
+            price: price,
+            images: imageList,
+            image: imageList[0],
+            desc: desc,
+            category: category
+          };
 
-if (error) {
-  console.log(error);
-  alert("上传失败");
-  return;
-}
+          const { error } = await db
+            .from("products")
+            .insert([newProduct]);
 
-await loadProducts();
+          if (error) {
+            console.log(error);
+            alert("上传失败");
+            return;
+          }
 
-        clearForm();
-      }
-    };
+          await loadProducts();
+          clearForm();
+        }
+      };
 
-    reader.readAsDataURL(imageFiles[i]);
-  }
+      reader.readAsDataURL(result);
+    },
+
+    error(err) {
+      console.log(err);
+      alert("图片压缩失败");
+    }
+  });
+ }
 }
 
 function clearForm() {

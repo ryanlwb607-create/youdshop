@@ -30,15 +30,17 @@ if (!product) {
   ? product.images
   : [product.image];
 
-  const variants = product.variants
-    ? product.variants.split(/[，,]/).map(v => {
+  let variants = [];
+
+if (typeof product.variants === "string") {
+    variants = product.variants.split(/[，,]/).map(v => {
         const parts = v.split("=");
         return {
             name: parts[0],
             price: parts[1]
         };
-    })
-    : [];
+    });
+}
 
 detailBox.innerHTML = `
   <div class="detail-images">
@@ -51,11 +53,11 @@ detailBox.innerHTML = `
   <div class="variant-box">
     <h3>规格选择</h3>
 
-    ${variants.map(v => `
-        <button class="variant-btn">
-            ${v.name} ¥${v.price}
-        </button>
-    `).join("")}
+    ${variants.length > 0 ? variants.map(v => `
+    <button class="variant-btn">
+        ${v.name} ¥${v.price}
+    </button>
+`).join("") : "<p>暂无规格</p >"}
   </div>
   <button>立即咨询</button>
   `;

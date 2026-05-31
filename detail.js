@@ -57,8 +57,6 @@ detailBox.innerHTML = `
 
 let currentImageIndex = 0;
 
-let currentImageIndex = 0;
-
 window.nextImage = function () {
   const images = product.images || [product.image];
   const images = product.images || [product.image];

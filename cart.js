@@ -104,4 +104,5 @@ localStorage.setItem("orders", JSON.stringify(orders));
   cart = [];
 localStorage.setItem("cart", JSON.stringify(cart));
 renderCart();
+window.location.href = "orders.html";
 }

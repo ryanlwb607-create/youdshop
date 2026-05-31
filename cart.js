@@ -90,4 +90,7 @@ function submitOrder() {
   const orderNo = generateOrderNo();
 
   alert("订单提交成功！\n订单号:" + orderNo);
+  cart = [];
+localStorage.setItem("cart", JSON.stringify(cart));
+renderCart();
 }

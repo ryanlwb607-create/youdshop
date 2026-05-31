@@ -200,6 +200,29 @@ function addToCart(index) {
   console.log("当前购物车：", cart);
 }
 
+function showCart() {
+  if (cart.length === 0) {
+    alert("购物车是空的");
+    return;
+  }
+
+  let message = "购物车：\n\n";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
+
+    message += `${index + 1}. ${item.name}\n`;
+    message += `数量：${item.quantity}\n`;
+    message += `小计：¥${subtotal}\n\n`;
+  });
+
+  message += `合计：¥${total}`;
+
+  alert(message);
+}
+
 async function addProduct() {
   const name = document.getElementById("name").value;
   const imageFiles = document.getElementById("image").files;

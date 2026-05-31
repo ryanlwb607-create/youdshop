@@ -88,6 +88,16 @@ function submitOrder() {
   }
 
   const orderNo = generateOrderNo();
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+orders.push({
+    orderNo: orderNo,
+    total: total,
+    time: new Date().toLocaleString(),
+    items: [...cart]
+});
+
+localStorage.setItem("orders", JSON.stringify(orders));
 
   alert("订单提交成功！\n订单号:" + orderNo);
   cart = [];

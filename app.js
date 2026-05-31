@@ -231,6 +231,14 @@ message += `订单号：${orderNo}`;
 alert(message);
 }
 
+function clearCart() {
+  if (confirm("确定要清空购物车吗？")) {
+    cart = [];
+    saveCart();
+    alert("购物车已清空");
+  }
+}
+
 function generateOrderNo() {
   const now = new Date();
 

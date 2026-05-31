@@ -177,6 +177,9 @@ ${
 }
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 function addToCart(index) {
   const product = window.currentProducts[index];
@@ -196,10 +199,7 @@ function addToCart(index) {
     });
   }
 
-  localStorage.setItem(
-  "cart",
-  JSON.stringify(cart)
-);
+  saveCart();
 
   alert("已加入购物车");
   console.log("当前购物车：", cart);
@@ -229,6 +229,11 @@ message += `合计：¥${total}\n\n`;
 message += `订单号：${orderNo}`;
 
 alert(message);
+if (confirm("是否清空购物车？")) {
+    cart = [];
+    saveCart();
+    alert("购物车已清空");
+}
 }
 
 function generateOrderNo() {

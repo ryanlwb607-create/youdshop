@@ -181,6 +181,14 @@ function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+function updateCartCount() {
+  const cartCount = document.getElementById("cartCount");
+  if (!cartCount) return;
+
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalCount;
+}
+
 function addToCart(index) {
   const product = window.currentProducts[index];
   const qtyInput = document.getElementById(`qty-${index}`);
@@ -200,6 +208,7 @@ function addToCart(index) {
   }
 
   saveCart();
+  updateCartCount();
 
   alert("已加入购物车");
   console.log("当前购物车：", cart);
@@ -235,6 +244,7 @@ function clearCart() {
   if (confirm("确定要清空购物车吗？")) {
     cart = [];
     saveCart();
+    updateCartCount();
     alert("购物车已清空");
   }
 }
@@ -661,3 +671,5 @@ function openImageViewer(src) {
 
   document.body.appendChild(viewer);
 }
+
+updateCartCount();

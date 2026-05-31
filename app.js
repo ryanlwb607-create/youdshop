@@ -267,6 +267,7 @@ async function addProduct() {
   const name = document.getElementById("name").value;
   const imageFiles = document.getElementById("image").files;
   const price = document.getElementById("price").value;
+  const variants = document.getElementById("variants").value;
   const desc = document.getElementById("desc").value;
   const category = document.getElementById("category").value;
 
@@ -296,6 +297,7 @@ async function addProduct() {
           const newProduct = {
             name: name,
             price: price,
+            variants: variants,
             images: imageList,
             image: imageList[0],
             desc: desc,

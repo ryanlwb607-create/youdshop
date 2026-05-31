@@ -934,3 +934,38 @@ body {
   border-radius: 12px;
   background: white;
 }
+
+@media (max-width: 768px) {
+  #productList.product-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-items: stretch !important;
+    gap: 10px !important;
+    padding: 8px !important;
+  }
+
+  #productList.product-list .product-card {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px !important;
+  box-sizing: border-box !important;
+}
+
+  #productList.product-list .product-img,
+  #productList.product-list .product-card img {
+    width: 100% !important;
+    height: 140px !important;
+    object-fit: contain !important;
+  }
+
+  #productList.product-list .product-card h3 {
+    font-size: 13px !important;
+  }
+
+  #productList.product-list .product-card p {
+    font-size: 11px !important;
+    line-height: 1.4;
+  }
+}

@@ -229,11 +229,6 @@ message += `合计：¥${total}\n\n`;
 message += `订单号：${orderNo}`;
 
 alert(message);
-if (confirm("是否清空购物车？")) {
-    cart = [];
-    saveCart();
-    alert("购物车已清空");
-}
 }
 
 function generateOrderNo() {

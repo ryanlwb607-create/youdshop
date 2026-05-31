@@ -24,6 +24,16 @@ if (!product) {
   ? product.images
   : [product.image];
 
+  const variants = product.variants
+    ? product.variants.split(/[，,]/).map(v => {
+        const parts = v.split("=");
+        return {
+            name: parts[0],
+            price: parts[1]
+        };
+    })
+    : [];
+
 detailBox.innerHTML = `
   <div class="detail-images">
     ${images.map(img => `<img src="${img}" class="detail-image">`).join("")}
@@ -31,6 +41,16 @@ detailBox.innerHTML = `
   <h2>${product.name || ""}</h2>
   <p>分类：${product.category || ""}</p >
   <p>${product.desc || ""}</p >
+
+  <div class="variant-box">
+    <h3>规格选择</h3>
+
+    ${variants.map(v => `
+        <button class="variant-btn">
+            ${v.name} ¥${v.price}
+        </button>
+    `).join("")}
+  </div>
   <button>立即咨询</button>
   `;
 }

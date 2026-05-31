@@ -176,7 +176,7 @@ ${
   isAdmin ? "block" : "none";
 }
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(index) {
   const product = window.currentProducts[index];
@@ -195,6 +195,11 @@ function addToCart(index) {
       quantity: quantity
     });
   }
+
+  localStorage.setItem(
+  "cart",
+  JSON.stringify(cart)
+);
 
   alert("已加入购物车");
   console.log("当前购物车：", cart);

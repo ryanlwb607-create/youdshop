@@ -223,9 +223,26 @@ function showCart() {
     message += `小计：¥${subtotal}\n\n`;
   });
 
-  message += `合计：¥${total}`;
+  const orderNo = generateOrderNo();
 
-  alert(message);
+message += `合计：¥${total}\n\n`;
+message += `订单号：${orderNo}`;
+
+alert(message);
+}
+
+function generateOrderNo() {
+  const now = new Date();
+
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  const h = String(now.getHours()).padStart(2, "0");
+  const min = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  const random = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+
+  return `YD${y}${m}${d}${h}${min}${s}${random}`;
 }
 
 async function addProduct() {

@@ -3,7 +3,8 @@ const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
 const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 
 const db = window.supabase.createClient(supabaseUrl, supabaseKey);
-const productId = localStorage.getItem("selectedProductId");
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
 let product = null;
 
 const detailBox = document.getElementById("detailBox");

@@ -16,17 +16,36 @@ if (orders.length === 0) {
 
   orders.forEach((order,index) => {
     orderList.innerHTML += `
-      <div style="border:1px solid #ddd;padding:12px;margin:12px;">
-        <h3>订单号：${order.orderNo}</h3>
-        <p>时间：${order.time}</p >
-        <p>合计：¥${order.total}</p >
+<div style="border:1px solid #ddd;padding:12px;margin:12px;border-radius:8px;">
+    <h3>订单号：${order.orderNo}</h3>
 
-        <button onclick="deleteOrder(${index})">
-           删除订单
-        </button>
+    <p>下单时间：${order.time}</p >
+    <p>商品数量：${order.items.length} 件</p >
 
-      </div>
-    `;
+    <p>商品明细：</p >
+
+    <ul>
+    ${order.items.map(item => `
+    <li>
+    ${item.title} × ${item.quantity}
+    </li>
+`   ).join("")}
+    </ul>
+
+    <p>订单金额：¥${order.total}</p >
+
+    <p>订单状态：
+        <span style="color:orange;">
+            待处理
+        </span>
+    </p >
+
+    <button onclick="deleteOrder(${index})">
+        删除订单
+    </button>
+
+</div>
+`;
   });
 }
 

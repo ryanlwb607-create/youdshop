@@ -81,7 +81,7 @@ function generateOrderNo() {
   return `YD${y}${m}${d}${h}${min}${s}${random}`;
 }
 
-function submitOrder() {
+async function submitOrder() {
   if (cart.length === 0) {
     alert("购物车是空的");
     return;
@@ -89,16 +89,20 @@ function submitOrder() {
 
   const orderNo = generateOrderNo();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const { error } = await db.from("orders").insert([
+    {
+        order_no: orderNo,
+        items: cart,
+        total: total,
+        status: "待处理"
+    }
+]);
 
-orders.push({
-    orderNo: orderNo,
-    total: total,
-    time: new Date().toLocaleString(),
-    items: [...cart]
-});
-
-localStorage.setItem("orders", JSON.stringify(orders));
+if (error) {
+    console.error("订单提交失败：", error);
+    alert("订单提交失败，请稍后再试");
+    return;
+}
 
   alert("订单提交成功！\n订单号:" + orderNo);
   cart = [];

@@ -27,7 +27,7 @@ if (orders.length === 0) {
     <ul>
     ${order.items.map(item => `
     <li>
-    ${item.title} × ${item.quantity}
+    ${item.name} × ${item.quantity}
     </li>
 `   ).join("")}
     </ul>

@@ -1,3 +1,9 @@
+const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
+
+const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
+
+const db = window.supabase.createClient(supabaseUrl, supabaseKey);
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const cartList = document.getElementById("cartList");

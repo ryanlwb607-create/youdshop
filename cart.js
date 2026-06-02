@@ -87,6 +87,21 @@ function generateOrderNo() {
   return `YD${y}${m}${d}${h}${min}${s}${random}`;
 }
 
+function getVisitorId() {
+  let visitorId = localStorage.getItem("visitorId");
+
+  if (!visitorId) {
+    visitorId =
+      "V" +
+      Date.now() +
+      Math.random().toString(36).substring(2, 8);
+
+    localStorage.setItem("visitorId", visitorId);
+  }
+
+  return visitorId;
+}
+
 async function submitOrder() {
   if (cart.length === 0) {
     alert("购物车是空的");
@@ -94,13 +109,15 @@ async function submitOrder() {
   }
 
   const orderNo = generateOrderNo();
+  const visitorId = getVisitorId();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const { error } = await db.from("orders").insert([
     {
         order_no: orderNo,
         items: cart,
         total: total,
-        status: "待处理"
+        status: "待处理",
+        visitor_id: visitorId
     }
 ]);
 

@@ -5,9 +5,11 @@ const db = supabase.createClient(supabaseUrl, supabaseKey);
 const orderList = document.getElementById("orderList");
 
 async function loadOrders() {
+  const visitorId = localStorage.getItem("visitorId");
   const { data: orders, error } = await db
     .from("orders")
     .select("*")
+    .eq("visitor_id", visitorId)
     .order("id", { ascending: false });
 
   if (error) {

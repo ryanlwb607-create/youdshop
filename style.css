@@ -976,3 +976,33 @@ body {
   overflow: hidden !important;
 }
 }
+
+.mobile-menu-btn {
+  display: none;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-menu-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mobile-menu.show {
+    display: flex;
+  }
+
+}

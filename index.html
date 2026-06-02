@@ -10,6 +10,14 @@
 </head>
 <body>
 
+  <header class="topbar">
+  <h1>YOUD(TOKYO) Shop</h1>
+
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+    功能菜单 ▼
+  </button>
+
+  <div id="mobileMenu" class="mobile-menu">
     <div class="login-box">
   <input type="text" id="adminUser" placeholder="管理员账号">
   <input type="password" id="adminPass" placeholder="管理员密码">
@@ -17,8 +25,6 @@
   <button onclick="logoutAdmin()">退出</button>
 </div>
 
-  <header class="topbar">
-  <h1>YOUD(TOKYO) Shop</h1>
   <a href="favorites.html" class="fav-link">
 ️ 我的收藏
 </a>
@@ -43,8 +49,8 @@
       <option>保健</option>
     </select>
     <div class="admin-only category-manage">
-  <input type="text" id="newCategory" placeholder="新增分类名称">
-  <button onclick="addCategory()">新增分类</button>
+     <input type="text" id="newCategory" placeholder="新增分类名称">
+     <button onclick="addCategory()">新增分类</button>
 </div>
   </div>
 </header>

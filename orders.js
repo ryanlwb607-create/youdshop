@@ -50,10 +50,36 @@ async function loadOrders() {
         </ul>
 
         <p>订单金额：¥${order.total}</p >
-        <p>订单状态：<span style="color:orange;">${order.status || "待处理"}</span></p >
-      </div>
-    `;
+        <p>订单状态：
+          <span style="color:orange;">
+          ${order.status || "待处理"}
+          </span>
+          </p >
+
+          <button onclick="deleteOrder(${order.id})">
+          删除订单
+          </button>
+          </div>
+          `;
   });
+}
+
+async function deleteOrder(id) {
+  if (!confirm("确定删除这个订单吗？")) return;
+
+  const { error } = await db
+    .from("orders")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.error("删除失败：", error);
+    alert("删除失败");
+    return;
+  }
+
+  alert("订单已删除");
+  location.reload();
 }
 
 loadOrders();

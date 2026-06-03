@@ -42,6 +42,11 @@ async function loadOrders() {
     orderList.innerHTML += `
       <div style="border:1px solid #ddd;padding:12px;margin:12px;border-radius:8px;">
         <h3>订单号：${order.order_no}</h3>
+        <p>下单时间：${new Date(order.created_at).toLocaleString()}</p >
+        <p>收货人：${order.customer_name || ""}</p >
+        <p>电话：${order.customer_phone || ""}</p >
+        <p>地址：${order.customer_address || ""}</p >
+        <p>备注：${order.customer_note || ""}</p >
         <p>商品数量：${items.length} 件</p >
 
         <p>商品明细：</p >

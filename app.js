@@ -681,3 +681,11 @@ function toggleMobileMenu() {
 
   menu.classList.toggle("show");
 }
+
+window.goOrdersPage = function () {
+  if (isAdmin) {
+    location.href = "orders.html";
+  } else {
+    location.href = "my-orders.html";
+  }
+};

@@ -117,7 +117,7 @@ window.addToCart = function() {
   });
 
   localStorage.setItem("cart", JSON.stringify(cart));
-
+  console.log(product);
   alert("已加入购物车");
 };
 

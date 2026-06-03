@@ -18,6 +18,33 @@
   <h2 id="cartTotal">合计：¥0</h2>
 
   <button onclick="clearCart()">清空购物车</button>
+  <h3>收货信息</h3>
+
+<input
+  type="text"
+  id="customerName"
+  placeholder="收货人姓名"
+  style="width:100%;margin:5px 0;padding:8px;"
+>
+
+<input
+  type="text"
+  id="customerPhone"
+  placeholder="联系电话"
+  style="width:100%;margin:5px 0;padding:8px;"
+>
+
+<textarea
+  id="customerAddress"
+  placeholder="收货地址"
+  style="width:100%;margin:5px 0;padding:8px;height:80px;"
+></textarea>
+
+<textarea
+  id="customerNote"
+  placeholder="备注（可不填）"
+  style="width:100%;margin:5px 0;padding:8px;height:60px;"
+></textarea>
   <button onclick="submitOrder()">提交订单</button>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

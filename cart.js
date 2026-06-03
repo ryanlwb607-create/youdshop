@@ -103,6 +103,16 @@ function getVisitorId() {
 }
 
 async function submitOrder() {
+  const customerName = document.getElementById("customerName").value.trim();
+  const customerPhone = document.getElementById("customerPhone").value.trim();
+  const customerAddress = document.getElementById("customerAddress").value.trim();
+  const customerNote = document.getElementById("customerNote").value.trim();
+
+if (!customerName || !customerPhone || !customerAddress) {
+  alert("请填写完整收货信息");
+  return;
+}
+
   if (cart.length === 0) {
     alert("购物车是空的");
     return;
@@ -112,13 +122,17 @@ async function submitOrder() {
   const visitorId = getVisitorId();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const { error } = await db.from("orders").insert([
-    {
-        order_no: orderNo,
-        items: cart,
-        total: total,
-        status: "待处理",
-        visitor_id: visitorId
-    }
+  {
+    order_no: orderNo,
+    items: cart,
+    total: total,
+    visitor_id: visitorId,
+
+    customer_name: customerName,
+    customer_phone: customerPhone,
+    customer_address: customerAddress,
+    customer_note: customerNote
+  }
 ]);
 
 if (error) {

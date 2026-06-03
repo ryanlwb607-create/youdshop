@@ -19,10 +19,10 @@ function renderCart() {
     total += subtotal;
 
     cartList.innerHTML += `
-      <div style="border:1px solid #ddd;padding:10px;margin:10px;">
-        <h3>${item.name}</h3>
-
-        <p>价格：¥${item.price}</p >
+  <div style="border:1px solid #ddd;padding:10px;margin:10px;">
+    <h3>${item.name || item.title || "未命名商品"}</h3>
+    <p>规格：${item.spec || "默认规格"}</p >
+    <p>价格：¥${item.price || 0}</p >
 
         <button onclick="changeQty(${index},-1)">-</button>
 

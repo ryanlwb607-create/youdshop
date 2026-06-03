@@ -9,7 +9,6 @@ async function loadOrders() {
   const { data: orders, error } = await db
     .from("orders")
     .select("*")
-    .eq("visitor_id", visitorId)
     .order("id", { ascending: false });
 
   if (error) {
@@ -77,7 +76,7 @@ async function deleteOrder(id) {
   const { error } = await db
     .from("orders")
     .delete()
-    .eq("id", id);
+    .eq("id",id);
 
   if (error) {
     console.error("删除失败：", error);

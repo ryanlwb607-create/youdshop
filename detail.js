@@ -1,3 +1,6 @@
+let selectedVariant = null;
+let currentProduct = null;
+
 const supabaseUrl = 'https://vngzpblmstezerhnvbpm.supabase.co'
 
 const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
@@ -22,6 +25,7 @@ async function loadProduct() {
   }
 
   product = data;
+  currentProduct = product;
 
 if (!product) {
   detailBox.innerHTML = "<p>没有找到产品</p >";
@@ -62,8 +66,6 @@ detailBox.innerHTML = `
   <button onclick="addToCart()">加入购物车</button>
   `;
 }
-
-let selectedVariant = null;
 
 window.selectVariant = function(name, price) {
   selectedVariant = { name, price };
@@ -107,10 +109,10 @@ window.addToCart = function() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const newItem = {
-    id: product.id,
-    title: product.title,
-    name: product.name || product.title,
-    image: product.image || product.images?.[0],
+    id: currentProduct.id,
+    title: currentProduct.title,
+    name: currentProduct.name || currentProduct.title,
+    image: currentProduct.image ||currentProduct.images?.[0],
     spec: selectedVariant.name,
     price: selectedVariant.price,
     quantity: 1

@@ -99,7 +99,6 @@ window.prevImage = function () {
 }
 
 window.addToCart = function() {
-
   if (!selectedVariant) {
     alert("请先选择规格");
     return;
@@ -107,14 +106,25 @@ window.addToCart = function() {
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  cart.push({
-  id: product.id,
-  name: product.name || product.title,
-  image: product.image || product.images?.[0],
-  spec: selectedVariant.name,
-  price: selectedVariant.price,
-  quantity: 1
-});
+  const newItem = {
+    id: product.id,
+    title: product.title,
+    name: product.name || product.title,
+    image: product.image || product.images?.[0],
+    spec: selectedVariant.name,
+    price: selectedVariant.price,
+    quantity: 1
+  };
+
+  const existingItem = cart.find(item =>
+    item.id === newItem.id && item.spec === newItem.spec
+  );
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push(newItem);
+  }
 
   localStorage.setItem("cart", JSON.stringify(cart));
 
@@ -122,3 +132,39 @@ window.addToCart = function() {
 };
 
 loadProduct();
+
+window.addToCartFromDetail = function () {
+  const product = window.currentProduct;
+
+  if (!product) {
+    alert("商品信息读取失败");
+    return;
+  }
+
+  const selectedSpecBtn = document.querySelector(".spec-btn.active");
+  const selectedSpec = selectedSpecBtn ? selectedSpecBtn.innerText : "";
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const cartItem = {
+    id: product.id,
+    title: product.title,
+    price: product.price,
+    image: product.image || (product.images && product.images[0]) || "",
+    spec: selectedSpec,
+    quantity: 1
+  };
+
+  const existingItem = cart.find(item =>
+    item.id === cartItem.id && item.spec === cartItem.spec
+  );
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push(cartItem);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("已加入购物车");
+};

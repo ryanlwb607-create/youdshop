@@ -108,13 +108,13 @@ window.addToCart = function() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   cart.push({
-    id: product.id,
-    name: product.name,
-    image: product.image,
-    spec: selectedVariant.name,
-    price: selectedVariant.price,
-    quantity: 1
-  });
+  id: product.id,
+  name: product.name || product.title,
+  image: product.image || product.images?.[0],
+  spec: selectedVariant.name,
+  price: selectedVariant.price,
+  quantity: 1
+});
 
   localStorage.setItem("cart", JSON.stringify(cart));
   console.log(product);

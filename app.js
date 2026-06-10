@@ -689,3 +689,19 @@ window.goOrdersPage = function () {
     location.href = "my-orders.html";
   }
 };
+
+window.showQR = function () {
+    document.getElementById("qrModal").style.display = "flex";
+}
+
+window.closeQR = function () {
+    document.getElementById("qrModal").style.display = "none";
+}
+
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("qrModal");
+
+    if (e.target === modal) {
+        closeQR();
+    }
+});

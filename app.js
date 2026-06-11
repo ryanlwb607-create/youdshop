@@ -25,21 +25,50 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let bannerIndex = 0;
 let products = [];
 
-async function loadProducts() {
+let currentPage = 0;
+const pageSize = 12;
+let allLoaded = false;
+
+async function loadProducts(reset = true) {
+
+  if (reset) {
+    currentPage = 0;
+    allLoaded = false;
+    products = [];
+  }
+
+  const from = currentPage * pageSize;
+  const to = from + pageSize - 1;
+
   const { data, error } = await db
     .from('products')
-    .select('*');
+    .select('*')
+    .range(from, to);
 
   if (error) {
     console.log(error);
     return;
   }
 
-  products = data || [];
+  if (!data || data.length < pageSize) {
+    allLoaded = true;
+  }
 
-if (document.getElementById("productList")) {
-  renderProducts();
-}
+  products = reset
+    ? data
+    : [...products, ...data];
+
+  if (document.getElementById("productList")) {
+    renderProducts();
+  }
+
+  currentPage++;
+
+  const btn = document.getElementById("loadMoreBtn");
+
+  if (btn) {
+    btn.style.display = allLoaded ? "none" : "block";
+  }
 }
 
 function renderCategories() {

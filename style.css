@@ -1042,3 +1042,12 @@ body {
     font-size: 28px;
     cursor: pointer;
 }
+
+#loadMoreBtn{
+  display:block;
+  margin:20px auto;
+  padding:12px 28px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+}

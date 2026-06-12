@@ -1140,3 +1140,48 @@ body {
     font-size: 14px !important;
   }
 }
+
+/* 最终版：压缩手机顶部菜单 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 26px !important;
+    margin: 6px 0 10px !important;
+  }
+
+  .topbar {
+    padding: 6px 10px !important;
+  }
+
+  #mobileMenu {
+    gap: 4px !important;
+  }
+
+  .mobile-menu-btn,
+  #adminToggleBtn,
+  #mobileMenu button,
+  #mobileMenu a,
+  #mobileMenu .fav-link,
+  #mobileMenu .cart-view-btn {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 4px 8px !important;
+    margin: 3px 0 !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  .button-row {
+    gap: 6px !important;
+    margin-bottom: 4px !important;
+  }
+
+  #searchInput,
+  #categoryFilter {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 4px 10px !important;
+    margin: 4px 0 !important;
+    font-size: 14px !important;
+  }
+}

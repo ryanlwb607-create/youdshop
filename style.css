@@ -1098,3 +1098,45 @@ body {
     font-size: 14px;
   }
 }
+
+/* 强制压缩手机端顶部 */
+@media (max-width: 600px) {
+  h1 {
+    margin: 8px 0 12px !important;
+    font-size: 26px !important;
+  }
+
+  .topbar {
+    padding: 8px 12px !important;
+  }
+
+  .mobile-menu {
+    gap: 4px !important;
+    padding: 0 12px !important;
+  }
+
+  .mobile-menu-btn,
+  #adminToggleBtn,
+  .button-row button,
+  .button-row a,
+  .fav-link,
+  .cart-view-btn {
+    padding: 6px 8px !important;
+    min-height: 34px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+  }
+
+  .button-row {
+    gap: 4px !important;
+    margin-bottom: 4px !important;
+  }
+
+  input,
+  select {
+    height: 34px !important;
+    padding: 5px 10px !important;
+    margin-bottom: 6px !important;
+    font-size: 14px !important;
+  }
+}

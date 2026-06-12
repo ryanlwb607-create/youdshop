@@ -399,7 +399,13 @@ function editProduct(index) {
   document.getElementById("editIndex").value = index;
   document.getElementById("editName").value = product.name;
   document.getElementById("editDesc").value = product.desc;
-  document.getElementById("editCategory").value = product.category;
+  const editCategory = document.getElementById("editCategory");
+
+  editCategory.innerHTML = categories
+  .map(c => `<option value="${c}">${c}</option>`)
+  .join("");
+
+  editCategory.value = product.category;
   document.getElementById("editPrice").value = product.price || "";
   document.getElementById("editModal").style.display = "block";
 }

@@ -782,3 +782,14 @@ async function loginMember() {
   document.getElementById("loginMsg").innerText = "登录成功";
   closeLoginModal();
 }
+
+async function checkMemberLogin() {
+  const { data } = await db.auth.getUser();
+
+  if (data && data.user) {
+    const name = data.user.user_metadata.name || data.user.email;
+    document.getElementById("userNameText").innerText = "欢迎，" + name;
+  }
+}
+
+checkMemberLogin();

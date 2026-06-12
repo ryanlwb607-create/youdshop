@@ -828,3 +828,16 @@ async function checkMemberLogin() {
 }
 
 checkMemberLogin();
+
+function toggleAdminPanel() {
+  const panel = document.getElementById("adminPanel");
+  const btn = document.getElementById("adminToggleBtn");
+
+  if (panel.style.display === "none") {
+    panel.style.display = "block";
+    btn.innerText = "管理员入口 ▲";
+  } else {
+    panel.style.display = "none";
+    btn.innerText = "管理员入口 ▼";
+  }
+}

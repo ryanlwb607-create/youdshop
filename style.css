@@ -1051,3 +1051,14 @@ body {
   border-radius:999px;
   cursor:pointer;
 }
+
+.button-row{
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.button-row > *{
+  flex:1;
+  text-align:center;
+}

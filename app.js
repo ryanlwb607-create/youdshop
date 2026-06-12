@@ -5,11 +5,11 @@ const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 const db = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let isAdmin = localStorage.getItem("isAdmin") === "true";
-let categories =
-JSON.parse(localStorage.getItem("categories")) || [
-    "护肤",
-    "彩妆",
-    "保健"
+let categories = [
+  "护肤",
+  "彩妆",
+  "保健",
+  "日常护理"
 ];
 
 const ADMIN_USER = "admin";

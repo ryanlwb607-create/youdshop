@@ -75,17 +75,6 @@ async function loadProducts(reset = true) {
     ? data
     : [...products, ...data];
 
-    categories = [
-  ...new Set(
-    products
-      .map(p => p.category)
-      .filter(c => c && c !== "EMPTY")
-  )
-];
-
-renderCategories();
-
-
   if (document.getElementById("productList")) {
     renderProducts();
   }

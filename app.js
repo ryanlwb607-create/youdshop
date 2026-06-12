@@ -43,7 +43,6 @@ async function loadProducts(reset = true) {
  const { data, error } = await db
   .from('products')
   .select('*')
-  .order('created_at', { ascending: false })
   .range(from, to);
 
   if (error) {

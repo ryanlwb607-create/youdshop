@@ -56,11 +56,18 @@ async function loadProducts(reset = true) {
   const from = currentPage * pageSize;
   const to = from + pageSize - 1;
 
- const { data, error } = await db
+ let query = db
   .from('products')
   .select('*')
-  .order('id', { ascending: false })
-  .range(from, to);
+  .order('id', { ascending: false });
+
+const selectedCategory = document.getElementById("categoryFilter")?.value;
+
+if (selectedCategory && selectedCategory !== "全部") {
+  query = query.eq("category", selectedCategory);
+}
+
+const { data, error } = await query.range(from, to);
 
   if (error) {
     console.log(error);
@@ -474,7 +481,9 @@ if (searchInput) {
 
 const categoryFilter = document.getElementById("categoryFilter");
 if (categoryFilter) {
-  categoryFilter.addEventListener("change", renderProducts);
+  categoryFilter.addEventListener("change", function () {
+  loadProducts(true);
+});
 }
 
 loadProducts();

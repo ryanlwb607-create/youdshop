@@ -5,12 +5,7 @@ const supabaseKey = 'sb_publishable_fx9OReyvJAM7ZKCZ_iHBXg_fcyCiMuJ'
 const db = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let isAdmin = localStorage.getItem("isAdmin") === "true";
-let categories = [
-  "护肤",
-  "彩妆",
-  "保健",
-  "日常护理"
-];
+let categories = [];
 
 const ADMIN_USER = "admin";
 const ADMIN_PASS = "123456";
@@ -58,6 +53,16 @@ async function loadProducts(reset = true) {
   products = reset
     ? data
     : [...products, ...data];
+
+    categories = [
+  ...new Set(
+    products
+      .map(p => p.category)
+      .filter(c => c && c !== "EMPTY")
+  )
+];
+
+renderCategories();
 
 
   if (document.getElementById("productList")) {

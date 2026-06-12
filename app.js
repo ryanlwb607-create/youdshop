@@ -7,6 +7,27 @@ const db = window.supabase.createClient(supabaseUrl, supabaseKey);
 let isAdmin = localStorage.getItem("isAdmin") === "true";
 let categories = [];
 
+async function loadCategoriesFromDB() {
+  const { data, error } = await db
+    .from("products")
+    .select("category");
+
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  categories = [
+    ...new Set(
+      data
+        .map(p => p.category)
+        .filter(c => c && c !== "EMPTY")
+    )
+  ];
+
+  renderCategories();
+}
+
 const ADMIN_USER = "admin";
 const ADMIN_PASS = "123456";
 const banners = [
@@ -648,7 +669,7 @@ function closeDetail() {
   document.getElementById("detailModal").classList.add("hidden");
 }
 
-renderCategories();
+loadCategoriesFromDB();
 
 if (document.getElementById("productList")) {
   loadProducts();

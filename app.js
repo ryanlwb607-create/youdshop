@@ -58,6 +58,8 @@ async function loadProducts(reset = true) {
     ? data
     : [...products, ...data];
 
+    products.sort((a, b) => b.id - a.id);
+
   if (document.getElementById("productList")) {
     renderProducts();
   }

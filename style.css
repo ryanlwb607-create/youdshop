@@ -1062,3 +1062,39 @@ body {
   flex:1;
   text-align:center;
 }
+
+@media (max-width: 600px) {
+  h1 {
+    margin: 16px 0 18px;
+    font-size: 30px;
+  }
+
+  .mobile-menu-btn,
+  #adminToggleBtn,
+  .button-row button,
+  .button-row a,
+  .fav-link,
+  .cart-view-btn {
+    padding: 6px 8px;
+    min-height: 36px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .mobile-menu {
+    gap: 4px;
+  }
+
+  .button-row {
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  input,
+  select {
+    height: 36px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+}

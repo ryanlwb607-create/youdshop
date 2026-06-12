@@ -40,10 +40,11 @@ async function loadProducts(reset = true) {
   const from = currentPage * pageSize;
   const to = from + pageSize - 1;
 
-  const { data, error } = await db
-    .from('products')
-    .select('*')
-    .range(from, to);
+ const { data, error } = await db
+  .from('products')
+  .select('*')
+  .order('created_at', { ascending: false })
+  .range(from, to);
 
   if (error) {
     console.log(error);

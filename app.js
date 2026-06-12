@@ -784,6 +784,11 @@ async function loginMember() {
 }
 
 async function checkMemberLogin() {
+  if (isAdmin) {
+    document.getElementById("userNameText").innerText = "";
+    return;
+  }
+
   const { data } = await db.auth.getUser();
 
   if (data && data.user) {

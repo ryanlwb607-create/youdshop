@@ -744,3 +744,41 @@ function openLoginModal() {
 function closeLoginModal() {
   document.getElementById("loginModal").style.display = "none";
 }
+
+async function registerMember() {
+  const name = document.getElementById("memberName").value;
+  const email = document.getElementById("memberEmail").value;
+  const password = document.getElementById("memberPassword").value;
+
+  const { data, error } = await db.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { name: name }
+    }
+  });
+
+  document.getElementById("loginMsg").innerText =
+    error ? error.message : "注册成功，请去邮箱确认验证邮件";
+}
+
+async function loginMember() {
+  const email = document.getElementById("memberEmail").value;
+  const password = document.getElementById("memberPassword").value;
+
+  const { data, error } = await db.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    document.getElementById("loginMsg").innerText = error.message;
+    return;
+  }
+
+  const userName = data.user.user_metadata.name || email;
+  localStorage.setItem("memberName", userName);
+  document.getElementById("userNameText").innerText = "欢迎，" + userName;
+  document.getElementById("loginMsg").innerText = "登录成功";
+  closeLoginModal();
+}

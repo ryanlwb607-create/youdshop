@@ -43,6 +43,7 @@ async function loadProducts(reset = true) {
  const { data, error } = await db
   .from('products')
   .select('*')
+  .order('id', { ascending: false })
   .range(from, to);
 
   if (error) {
@@ -58,7 +59,6 @@ async function loadProducts(reset = true) {
     ? data
     : [...products, ...data];
 
-    products.sort((a, b) => b.id - a.id);
 
   if (document.getElementById("productList")) {
     renderProducts();

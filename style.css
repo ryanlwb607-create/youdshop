@@ -1466,3 +1466,29 @@ footer,
   background: linear-gradient(135deg, #fff1cb 0%, #efb842 100%) !important;
   color: #6b3f16 !important;
 }
+
+/* 我的收藏按钮 */
+.fav-link {
+    background: linear-gradient(
+        135deg,
+        #fff7df 0%,
+        #f6c86a 45%,
+        #d99a28 100%
+    ) !important;
+
+    color: #6b3f16 !important;
+    border: 1px solid #e0b45d !important;
+    border-radius: 20px !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-weight: 700 !important;
+}
+
+.fav-link:hover {
+    background: linear-gradient(
+        135deg,
+        #fff1cb 0%,
+        #efb842 100%
+    ) !important;
+}

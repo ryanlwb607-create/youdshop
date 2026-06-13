@@ -1497,3 +1497,17 @@ footer,
 .product-card p {
   display: none !important;
 }
+
+/* 手机端隐藏首页产品简介，保留查看详情 */
+@media (max-width: 768px) {
+  .product-card p,
+  .product-card .description,
+  .product-card .product-description,
+  .product-card .product-desc,
+  .product-item p,
+  .product-item .description,
+  .product-item .product-description,
+  .mobile-product-card p {
+    display: none !important;
+  }
+}

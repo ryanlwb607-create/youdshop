@@ -186,7 +186,7 @@ imageBox.className = "product-images";
   <div class="category">${product.category}</div>
   <p class="price">¥${product.price || "未设置价格"}</p >
 
-  <p>${product.description || product.desc || "暂无介绍"}</p >
+  <!-- 首页隐藏简介 -->
 
   <button class="detail-btn" onclick='openDetail("${product.id}")'>
   查看详情

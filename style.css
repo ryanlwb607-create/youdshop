@@ -1494,20 +1494,12 @@ footer,
 }
 
 /* 隐藏首页产品简介 */
-.product-card p {
-  display: none !important;
-}
 
 /* 手机端隐藏首页产品简介，保留查看详情 */
 @media (max-width: 768px) {
-  .product-card p,
   .product-card .description,
   .product-card .product-description,
-  .product-card .product-desc,
-  .product-item p,
-  .product-item .description,
-  .product-item .product-description,
-  .mobile-product-card p {
+  .product-card .product-desc{
     display: none !important;
   }
 }
@@ -1545,4 +1537,13 @@ footer,
     display: block !important;
     margin: 10px 0 !important;
   }
+}
+
+/* 恢复价格显示 */
+.product-card .price,
+#productList .price {
+    display: block !important;
+    color: #d9534f !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
 }

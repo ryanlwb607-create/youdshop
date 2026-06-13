@@ -577,6 +577,11 @@ function renderDetail() {
             ${product.description || product.desc || "暂无介绍"}
         </p >
 
+        <button class="fav-btn"
+        onclick="toggleFavorite(products.findIndex(p => p.id == product.id))">
+        收藏
+        </button>
+
         <button onclick="history.back()">
             返回首页
         </button>

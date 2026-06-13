@@ -1511,3 +1511,24 @@ footer,
     display: none !important;
   }
 }
+
+/* 手机端首页隐藏收藏按钮 */
+@media (max-width: 768px) {
+  .product-card .fav-btn {
+    display: none !important;
+  }
+}
+
+/* 手机端数量选择和购物车按钮竖排 */
+@media (max-width: 768px) {
+  .product-card .qty-input,
+  .product-card .cart-btn {
+    width: 100% !important;
+    display: block !important;
+    margin: 6px 0 !important;
+  }
+
+  .product-card .cart-btn {
+    text-align: center !important;
+  }
+}

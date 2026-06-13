@@ -196,9 +196,17 @@ imageBox.className = "product-images";
   ${favorites.includes(index) ? "取消收藏" : "收藏"}
 </button>
 
+<input
+  type="number"
+  min="1"
+  value="1"
+  class="qty-input"
+  id="qty-${index}"
+>
+
 <button
   class="cart-btn"
-  onclick="openCartOptions(${index})"
+  onclick="addToCart(${index})"
 >
 加入购物车
 </button>
@@ -234,10 +242,12 @@ function updateCartCount() {
   cartCount.textContent = totalCount;
 }
 
-function addToCart(index, quantity = 1, spec = "") {
+function addToCart(index) {
   const product = window.currentProducts[index];
+  const qtyInput = document.getElementById(`qty-${index}`);
+  const quantity = Number(qtyInput.value) || 1;
 
-  const existing = cart.find(item => item.id === product.id && item.spec === spec);
+  const existing = cart.find(item => item.id === product.id);
 
   if (existing) {
     existing.quantity += quantity;
@@ -246,27 +256,15 @@ function addToCart(index, quantity = 1, spec = "") {
       id: product.id,
       name: product.name,
       price: Number(product.price) || 0,
-      quantity: quantity,
-      spec: spec
+      quantity: quantity
     });
-    saveCart();
+  }
+
+  saveCart();
   updateCartCount();
 
   alert("已加入购物车");
   console.log("当前购物车：", cart);
-  }
-
-  function openCartOptions(index) {
-  const product = window.currentProducts[index];
-
-  const spec = prompt("请输入规格，例如：1盒 / 2盒 / 默认", "默认");
-  if (spec === null) return;
-
-  const quantity = prompt("请输入购买数量", "1");
-  if (!quantity || Number(quantity) <= 0) return;
-
-  addToCart(index, Number(quantity), spec);
-
 }
 
 function showCart() {

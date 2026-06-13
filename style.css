@@ -1492,3 +1492,8 @@ footer,
         #efb842 100%
     ) !important;
 }
+
+/* 隐藏首页产品简介 */
+.product-card p {
+  display: none !important;
+}

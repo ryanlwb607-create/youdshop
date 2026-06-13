@@ -225,7 +225,7 @@ if (error) {
   cart = [];
 localStorage.setItem("cart", JSON.stringify(cart));
 renderCart();
-window.location.href = "orders.html";
+window.location.href = "my-orders.html";
 }
 
 loadSavedAddresses();

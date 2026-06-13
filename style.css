@@ -1444,3 +1444,25 @@ footer,
     font-size: 14px !important;
   }
 }
+
+/* 修复：我的收藏蓝色按钮 */
+#favoritesBtn,
+.favorites-btn,
+.favorite-button,
+.nav-btn,
+.menu-btn {
+  background: linear-gradient(135deg, #fff7df 0%, #f6c86a 45%, #d99a28 100%) !important;
+  color: #6b3f16 !important;
+  border: 1px solid #e0b45d !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 10px rgba(170, 110, 30, 0.18) !important;
+}
+
+#favoritesBtn.active,
+.favorites-btn.active,
+.favorite-button.active,
+.nav-btn.active,
+.menu-btn.active {
+  background: linear-gradient(135deg, #fff1cb 0%, #efb842 100%) !important;
+  color: #6b3f16 !important;
+}

@@ -1532,3 +1532,17 @@ footer,
     text-align: center !important;
   }
 }
+
+/* 手机端详情页：规格/数量/购物车按钮一列 */
+@media (max-width: 768px) {
+  .detail-container button,
+  .detail-container input,
+  .detail-container select,
+  .product-detail button,
+  .product-detail input,
+  .product-detail select {
+    width: 100% !important;
+    display: block !important;
+    margin: 10px 0 !important;
+  }
+}

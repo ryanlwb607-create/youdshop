@@ -1214,3 +1214,233 @@ body {
     box-sizing: border-box !important;
   }
 }
+
+/* =========================
+   招财猫 × MUJI × 日本药妆店主题
+   放在 style.css 最底部
+========================= */
+
+:root {
+  --cat-bg: #fffaf1;
+  --cat-card: #fffdf8;
+  --cat-gold: #d99a28;
+  --cat-gold-light: #f6c86a;
+  --cat-brown: #6b3f16;
+  --cat-red: #d85b4a;
+  --cat-border: #ead8b8;
+}
+
+/* 全站背景 */
+body {
+  background: var(--cat-bg) !important;
+  color: var(--cat-brown) !important;
+}
+
+/* 顶部区域 */
+header,
+.navbar,
+.top-bar {
+  background: #fffdf8 !important;
+  border-bottom: 1px solid var(--cat-border) !important;
+  box-shadow: 0 3px 12px rgba(160, 120, 60, 0.08) !important;
+}
+
+/* 网站标题 */
+.logo,
+.site-title,
+h1 {
+  color: var(--cat-brown) !important;
+  font-weight: 800 !important;
+}
+
+/* 首页大 Banner */
+.hero,
+.banner,
+.hero-section {
+  background:
+    linear-gradient(135deg, #fff8ec 0%, #ffe9bf 55%, #f8cf82 100%) !important;
+  border: 1px solid var(--cat-border) !important;
+  border-radius: 22px !important;
+  color: var(--cat-brown) !important;
+  box-shadow: 0 8px 24px rgba(190, 130, 40, 0.14) !important;
+}
+
+/* Banner 标题 */
+.hero h1,
+.banner h1,
+.hero-title {
+  color: var(--cat-brown) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Banner 副标题 */
+.hero p,
+.banner p,
+.hero-subtitle {
+  color: #8a5a24 !important;
+}
+
+/* 所有按钮统一招财猫金色 */
+button,
+.hero-btn,
+.btn,
+.btn-primary,
+.add-cart-btn,
+.favorite-btn,
+.checkout-btn,
+.submit-btn,
+.admin-btn,
+.edit-btn,
+.delete-btn,
+.category-btn {
+  background: linear-gradient(135deg, #fff7df 0%, #f6c86a 45%, #d99a28 100%) !important;
+  color: var(--cat-brown) !important;
+  border: 1px solid #e0b45d !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 10px rgba(170, 110, 30, 0.18) !important;
+}
+
+/* 按钮 hover */
+button:hover,
+.hero-btn:hover,
+.btn:hover,
+.btn-primary:hover,
+.add-cart-btn:hover,
+.favorite-btn:hover,
+.checkout-btn:hover,
+.submit-btn:hover,
+.admin-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover,
+.category-btn:hover {
+  background: linear-gradient(135deg, #fff1cb 0%, #efb842 100%) !important;
+  transform: translateY(-1px);
+}
+
+/* 分类按钮 */
+.category-btn {
+  background: #fffdf8 !important;
+  color: var(--cat-brown) !important;
+  border: 1px solid var(--cat-border) !important;
+}
+
+/* 分类选中 */
+.category-btn.active,
+.category-btn.selected {
+  background: var(--cat-gold) !important;
+  color: #fff !important;
+  border-color: var(--cat-gold) !important;
+}
+
+/* 商品卡片 */
+.product-card,
+.card {
+  background: var(--cat-card) !important;
+  border: 1px solid var(--cat-border) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 6px 18px rgba(150, 110, 60, 0.12) !important;
+  overflow: hidden !important;
+}
+
+/* 商品图片 */
+.product-card img,
+.card img {
+  border-radius: 14px !important;
+}
+
+/* 商品标题 */
+.product-title,
+.product-card h3,
+.card h3 {
+  color: var(--cat-brown) !important;
+  font-weight: 700 !important;
+}
+
+/* 价格 */
+.price,
+.product-price {
+  color: var(--cat-red) !important;
+  font-weight: 800 !important;
+}
+
+/* 搜索框、输入框 */
+input,
+select,
+textarea,
+.search-input {
+  background: #fffdf8 !important;
+  border: 1px solid var(--cat-border) !important;
+  border-radius: 999px !important;
+  color: var(--cat-brown) !important;
+  box-shadow: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.search-input:focus {
+  outline: none !important;
+  border-color: var(--cat-gold) !important;
+  box-shadow: 0 0 0 3px rgba(217, 154, 40, 0.18) !important;
+}
+
+/* 弹窗 */
+.modal,
+.popup,
+.dialog,
+.cart-modal,
+.order-modal {
+  background: #fffdf8 !important;
+  border: 1px solid var(--cat-border) !important;
+  border-radius: 20px !important;
+  color: var(--cat-brown) !important;
+}
+
+/* 底部 */
+footer,
+.footer {
+  background: #fff4df !important;
+  color: var(--cat-brown) !important;
+  border-top: 1px solid var(--cat-border) !important;
+}
+
+/* 小标签：热卖、日本直邮等 */
+.tag,
+.badge,
+.label {
+  background: #fff1d2 !important;
+  color: var(--cat-brown) !important;
+  border: 1px solid #efc878 !important;
+  border-radius: 999px !important;
+}
+
+/* 红色重点标签 */
+.hot,
+.sale,
+.discount {
+  background: var(--cat-red) !important;
+  color: #fff !important;
+}
+
+/* 手机端更柔和 */
+@media (max-width: 768px) {
+  .hero,
+  .banner,
+  .hero-section {
+    border-radius: 16px !important;
+    padding: 18px !important;
+  }
+
+  .product-card,
+  .card {
+    border-radius: 16px !important;
+  }
+
+  button,
+  .btn,
+  .category-btn {
+    font-size: 14px !important;
+  }
+}

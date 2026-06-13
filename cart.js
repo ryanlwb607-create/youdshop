@@ -164,14 +164,19 @@ async function saveAddressIfNeeded() {
 
   const visitorId = getVisitorId();
 
-  await db.from("address_book").insert([
-    {
-      visitor_id: visitorId,
-      name: document.getElementById("customerName").value,
-      phone: document.getElementById("customerPhone").value,
-      address: document.getElementById("customerAddress").value
-    }
-  ]);
+  const { error } = await db.from("address_book").insert([
+  {
+    visitor_id: visitorId,
+    name: document.getElementById("customerName").value,
+    phone: document.getElementById("customerPhone").value,
+    address: document.getElementById("customerAddress").value
+  }
+]);
+
+if (error) {
+  console.error("保存收货信息失败：", error);
+  alert("保存收货信息失败：" + error.message);
+}
 }
 
 async function submitOrder() {

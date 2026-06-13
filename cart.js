@@ -102,6 +102,78 @@ function getVisitorId() {
   return visitorId;
 }
 
+async function loadSavedAddresses() {
+  const select = document.getElementById("savedAddressSelect");
+  if (!select) return;
+
+  const visitorId = getVisitorId();
+
+  const { data, error } = await db
+    .from("address_book")
+    .select("*")
+    .eq("visitor_id", visitorId);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  select.innerHTML =
+    '<option value="">选择已保存收货信息</option>';
+
+  data.forEach(item => {
+    const option = document.createElement("option");
+
+    option.value = item.id;
+    option.textContent =
+      item.name + "｜" + item.phone;
+
+    option.dataset.name = item.name;
+    option.dataset.phone = item.phone;
+    option.dataset.address = item.address;
+
+    select.appendChild(option);
+  });
+}
+
+function fillSavedAddress() {
+  const select =
+    document.getElementById("savedAddressSelect");
+
+  const option =
+    select.options[select.selectedIndex];
+
+  if (!option.value) return;
+
+  document.getElementById("customerName").value =
+    option.dataset.name;
+
+  document.getElementById("customerPhone").value =
+    option.dataset.phone;
+
+  document.getElementById("customerAddress").value =
+    option.dataset.address;
+}
+
+async function saveAddressIfNeeded() {
+
+  const checkbox =
+    document.getElementById("saveAddressCheck");
+
+  if (!checkbox || !checkbox.checked) return;
+
+  const visitorId = getVisitorId();
+
+  await db.from("address_book").insert([
+    {
+      visitor_id: visitorId,
+      name: document.getElementById("customerName").value,
+      phone: document.getElementById("customerPhone").value,
+      address: document.getElementById("customerAddress").value
+    }
+  ]);
+}
+
 async function submitOrder() {
   const customerName = document.getElementById("customerName").value.trim();
   const customerPhone = document.getElementById("customerPhone").value.trim();
@@ -142,8 +214,13 @@ if (error) {
 }
 
   alert("订单提交成功！\n订单号:" + orderNo);
+
+  await saveAddressIfNeeded();
+
   cart = [];
 localStorage.setItem("cart", JSON.stringify(cart));
 renderCart();
 window.location.href = "orders.html";
 }
+
+loadSavedAddresses();

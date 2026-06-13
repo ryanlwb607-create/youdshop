@@ -20,6 +20,19 @@
   <button onclick="clearCart()">清空购物车</button>
   <h3>收货信息</h3>
 
+  <select id="savedAddressSelect"
+        onchange="fillSavedAddress()"
+        style="width:100%;margin:5px 0;padding:8px;">
+
+  <option value="">选择已保存收货信息</option>
+
+</select>
+
+<label style="display:block;margin:8px 0;">
+  <input type="checkbox" id="saveAddressCheck">
+  保存本次收货信息
+</label>
+
 <input
   type="text"
   id="customerName"

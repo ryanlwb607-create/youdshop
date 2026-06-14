@@ -494,11 +494,36 @@ searchInput.addEventListener("input", () => {
   searchTimer = setTimeout(async () => {
     const keyword = searchInput.value.trim();
 
+    const searchStatus =
+      document.getElementById("searchStatus");
+
     if (keyword) {
+
+      if (searchStatus) {
+        searchStatus.textContent = " 加载中...";
+      }
+
       await loadProducts(true, true);
+
+      if (products.length === 0) {
+        if (searchStatus) {
+         searchStatus.textContent = "无相关产品";
+        }
+      } else {
+        if (searchStatus) {
+          searchStatus.textContent = "";
+        }
+      }
+
     } else {
+
+      if (searchStatus) {
+        searchStatus.textContent = "";
+      }
+
       await loadProducts(true);
     }
+
   }, 500);
 });
 }

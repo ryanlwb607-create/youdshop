@@ -1547,3 +1547,29 @@ footer,
     font-size: 20px !important;
     font-weight: bold !important;
 }
+
+.search-wrap {
+  position: relative;
+}
+
+.search-wrap::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+#searchInput {
+  padding-left: 46px !important;
+}
+
+.search-status {
+  text-align: center;
+  color: #8b5e3c;
+  font-weight: 600;
+  margin: 18px 0;
+}

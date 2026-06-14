@@ -450,6 +450,7 @@ async function saveEditProduct() {
   const newPrice =
   document.getElementById("editPrice").value;
 
+  const currentScrollY = window.scrollY;
   const { error } = await db
   .from("products")
   .update({
@@ -469,9 +470,14 @@ async function saveEditProduct() {
 
   alert("编辑成功");
 
-  await loadProducts();
-  
-  closeEditModal();
+  await loadProducts(false);
+
+  window.scrollTo({
+  top: currentScrollY,
+  behavior: "instant"
+});
+
+closeEditModal();
 }
 
 const searchInput = document.getElementById("searchInput");

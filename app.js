@@ -486,14 +486,20 @@ closeEditModal();
 
 const searchInput = document.getElementById("searchInput");
 if (searchInput) {
-  searchInput.addEventListener("input", async () => {
-  const keyword = searchInput.value.trim();
+  let searchTimer = null;
 
-  if (keyword) {
-    await loadProducts(true, true);
-  } else {
-    await loadProducts(true);
-  }
+searchInput.addEventListener("input", () => {
+  clearTimeout(searchTimer);
+
+  searchTimer = setTimeout(async () => {
+    const keyword = searchInput.value.trim();
+
+    if (keyword) {
+      await loadProducts(true, true);
+    } else {
+      await loadProducts(true);
+    }
+  }, 500);
 });
 }
 

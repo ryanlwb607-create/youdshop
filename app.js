@@ -45,7 +45,7 @@ let currentPage = 0;
 const pageSize = 12;
 let allLoaded = false;
 
-async function loadProducts(reset = true) {
+async function loadProducts(reset = true, searchMode = false) {
 
   if (reset) {
     currentPage = 0;
@@ -67,7 +67,11 @@ if (selectedCategory && selectedCategory !== "全部") {
   query = query.eq("category", selectedCategory);
 }
 
-const { data, error } = await query.range(from, to);
+if (!searchMode) {
+  query = query.range(from, to);
+}
+
+const { data, error } = await query;
 
   if (error) {
     console.log(error);
@@ -482,7 +486,15 @@ closeEditModal();
 
 const searchInput = document.getElementById("searchInput");
 if (searchInput) {
-  searchInput.addEventListener("input", renderProducts);
+  searchInput.addEventListener("input", async () => {
+  const keyword = searchInput.value.trim();
+
+  if (keyword) {
+    await loadProducts(true, true);
+  } else {
+    await loadProducts(true);
+  }
+});
 }
 
 const categoryFilter = document.getElementById("categoryFilter");

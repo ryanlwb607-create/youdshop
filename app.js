@@ -9,21 +9,16 @@ let categories = [];
 
 async function loadCategoriesFromDB() {
   const { data, error } = await db
-    .from("products")
-    .select("category");
+    .from("categories")
+    .select("*")
+    .order("sort_order", { ascending: true });
 
   if (error) {
     console.log(error);
     return;
   }
 
-  categories = [
-    ...new Set(
-      data
-        .map(p => p.category)
-        .filter(c => c && c !== "EMPTY")
-    )
-  ];
+  categories = data || [];
 
   renderCategories();
 }
@@ -118,21 +113,21 @@ function renderCategories() {
 
     categories.forEach(category => {
 
-        if(categorySelect){
-            categorySelect.innerHTML +=
-            `<option value="${category}">
-                ${category}
-            </option>`;
-        }
+    if(categorySelect){
+        categorySelect.innerHTML += `
+        <option value="${category.name}">
+            ${category.name}
+        </option>`;
+    }
 
-        if(filterSelect){
-            filterSelect.innerHTML +=
-            `<option value="${category}">
-                ${category}
-            </option>`;
-        }
+    if(filterSelect){
+        filterSelect.innerHTML += `
+        <option value="${category.name}">
+            ${category.name}
+        </option>`;
+    }
 
-    });
+});
 
 }
 

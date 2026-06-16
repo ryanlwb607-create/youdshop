@@ -418,7 +418,7 @@ function editProduct(index) {
   const editCategory = document.getElementById("editCategory");
 
   editCategory.innerHTML = categories
-  .map(c => `<option value="${c}">${c}</option>`)
+  .map(c => `<option value="${c.name}">${c.name}</option>`)
   .join("");
 
   editCategory.value = product.category;

@@ -166,7 +166,7 @@ function closeMobileMenu() {
 
 function selectSubCategory(name) {
   selectedSubCategory = name;
-  renderProducts();
+  loadProducts(true);
   closeMobileMenu();
 }
 

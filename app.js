@@ -121,6 +121,41 @@ function renderCategories() {
   }
 }
 
+function renderSubCategories(parentName) {
+  const box = document.getElementById("subCategoryBox");
+  if (!box) return;
+
+  const parent = categories.find(
+    c => c.name === parentName && !c.parent_id
+  );
+
+  if (!parent) {
+    box.innerHTML = "";
+    return;
+  }
+
+  const children = categories.filter(
+    c => c.parent_id === parent.id
+  );
+
+  if (children.length === 0) {
+    box.innerHTML = "";
+    return;
+  }
+
+  box.innerHTML = children.map(child => `
+    <button class="sub-category-btn"
+      onclick="selectSubCategory('${child.name}')">
+      ${child.name}
+    </button>
+  `).join("");
+}
+
+function selectSubCategory(name) {
+  document.getElementById("categoryFilter").value = name;
+  renderProducts();
+}
+
 function renderProducts() {
   const list = document.getElementById("productList");
   const searchText = document.getElementById("searchInput").value.toLowerCase();
@@ -516,6 +551,7 @@ searchInput.addEventListener("input", () => {
 const categoryFilter = document.getElementById("categoryFilter");
 if (categoryFilter) {
   categoryFilter.addEventListener("change", function () {
+  renderSubCategories(this.value);
   loadProducts(true);
 });
 }

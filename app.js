@@ -57,10 +57,11 @@ async function loadProducts(reset = true, searchMode = false) {
   .select('*')
   .order('id', { ascending: false });
 
-const selectedCategory = document.getElementById("categoryFilter")?.value;
+const selectedCategory = document.getElementById("categoryFilter").value;
+const activeCategory = selectedSubCategory || selectedCategory;
 
-if (selectedCategory && selectedCategory !== "全部") {
-  query = query.eq("category", selectedCategory);
+if (activeCategory && activeCategory !== "全部") {
+  query = query.eq("category", activeCategory);
 }
 
 if (!searchMode) {

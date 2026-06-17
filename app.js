@@ -9,9 +9,9 @@ let categories = [];
 
 async function loadCategoriesFromDB() {
   const { data, error } = await db
-    .from("categories")
-    .select("*")
-    .order("sort_order", { ascending: true });
+  .from("categories")
+  .select("id, name, parent_id, sort_order")
+  .order("sort_order", { ascending: true });
 
   if (error) {
     console.log(error);
@@ -95,40 +95,47 @@ const { data, error } = await query;
 }
 
 function renderCategories() {
+  const categorySelect = document.getElementById("category");
+  const filterSelect = document.getElementById("categoryFilter");
 
-    const categorySelect =
-        document.getElementById("category");
+  const parentCategories = categories.filter(c => !c.parent_id);
+  const childCategories = categories.filter(c => c.parent_id);
 
-    const filterSelect =
-        document.getElementById("categoryFilter");
+  if (categorySelect) {
+    categorySelect.innerHTML = "";
 
-    if(categorySelect){
-        categorySelect.innerHTML = "";
-    }
+    parentCategories.forEach(parent => {
+      categorySelect.innerHTML += `
+        <option value="${parent.name}">${parent.name}</option>
+      `;
 
-    if(filterSelect){
-        filterSelect.innerHTML =
-        "<option>全部</option>";
-    }
+      childCategories
+        .filter(child => child.parent_id === parent.id)
+        .forEach(child => {
+          categorySelect.innerHTML += `
+            <option value="${child.name}">　└ ${child.name}</option>
+          `;
+        });
+    });
+  }
 
-    categories.forEach(category => {
+  if (filterSelect) {
+    filterSelect.innerHTML = `<option value="全部">全部</option>`;
 
-    if(categorySelect){
-        categorySelect.innerHTML += `
-        <option value="${category.name}">
-            ${category.name}
-        </option>`;
-    }
+    parentCategories.forEach(parent => {
+      filterSelect.innerHTML += `
+        <option value="${parent.name}">${parent.name}</option>
+      `;
 
-    if(filterSelect){
-        filterSelect.innerHTML += `
-        <option value="${category.name}">
-            ${category.name}
-        </option>`;
-    }
-
-});
-
+      childCategories
+        .filter(child => child.parent_id === parent.id)
+        .forEach(child => {
+          filterSelect.innerHTML += `
+            <option value="${child.name}">　└ ${child.name}</option>
+          `;
+        });
+    });
+  }
 }
 
 function renderProducts() {

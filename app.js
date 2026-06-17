@@ -99,7 +99,6 @@ function renderCategories() {
   const filterSelect = document.getElementById("categoryFilter");
 
   const parentCategories = categories.filter(c => !c.parent_id);
-  const childCategories = categories.filter(c => c.parent_id);
 
   if (categorySelect) {
     categorySelect.innerHTML = "";
@@ -108,14 +107,6 @@ function renderCategories() {
       categorySelect.innerHTML += `
         <option value="${parent.name}">${parent.name}</option>
       `;
-
-      childCategories
-        .filter(child => child.parent_id === parent.id)
-        .forEach(child => {
-          categorySelect.innerHTML += `
-            <option value="${child.name}">　└ ${child.name}</option>
-          `;
-        });
     });
   }
 
@@ -126,14 +117,6 @@ function renderCategories() {
       filterSelect.innerHTML += `
         <option value="${parent.name}">${parent.name}</option>
       `;
-
-      childCategories
-        .filter(child => child.parent_id === parent.id)
-        .forEach(child => {
-          filterSelect.innerHTML += `
-            <option value="${child.name}">　└ ${child.name}</option>
-          `;
-        });
     });
   }
 }

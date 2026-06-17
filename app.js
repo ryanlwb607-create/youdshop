@@ -153,9 +153,21 @@ function renderSubCategories(parentName) {
   `).join("");
 }
 
+function closeMobileMenu() {
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (
+    mobileMenu &&
+    mobileMenu.style.display !== "none"
+  ) {
+    toggleMobileMenu();
+  }
+}
+
 function selectSubCategory(name) {
   selectedSubCategory = name;
-  loadProducts();
+  renderProducts();
+  closeMobileMenu();
 }
 
 function renderProducts() {
@@ -559,6 +571,13 @@ if (categoryFilter) {
   selectedSubCategory = "";
   renderSubCategories(this.value);
   loadProducts(true);
+
+  const parent = categories.find(c => c.name === this.value && !c.parent_id);
+  const hasChildren = parent && categories.some(c => c.parent_id === parent.id);
+
+  if (!hasChildren) {
+    closeMobileMenu();
+  }
 });
 }
 

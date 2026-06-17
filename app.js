@@ -154,7 +154,7 @@ function renderSubCategories(parentName) {
 
 function selectSubCategory(name) {
   selectedSubCategory = name;
-  loadProducts(true);
+  loadProducts();
 }
 
 function renderProducts() {

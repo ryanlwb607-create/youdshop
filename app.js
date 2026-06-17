@@ -6,6 +6,7 @@ const db = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let isAdmin = localStorage.getItem("isAdmin") === "true";
 let categories = [];
+let selectedSubCategory = "";
 
 async function loadCategoriesFromDB() {
   const { data, error } = await db
@@ -152,14 +153,15 @@ function renderSubCategories(parentName) {
 }
 
 function selectSubCategory(name) {
-  document.getElementById("categoryFilter").value = name;
-  renderProducts();
+  selectedSubCategory = name;
+  loadProducts(true);
 }
 
 function renderProducts() {
   const list = document.getElementById("productList");
   const searchText = document.getElementById("searchInput").value.toLowerCase();
   const category = document.getElementById("categoryFilter").value;
+  const activeCategory = selectedSubCategory || category;
 
   list.innerHTML = "";
 
@@ -169,7 +171,9 @@ function renderProducts() {
       product.desc.toLowerCase().includes(searchText) ||
       product.category.toLowerCase().includes(searchText);
 
-    const matchCategory = category === "全部" || product.category === category;
+    const matchCategory =
+  activeCategory === "全部" ||
+  product.category === activeCategory;
 
     return matchSearch && matchCategory;
   });
@@ -551,6 +555,7 @@ searchInput.addEventListener("input", () => {
 const categoryFilter = document.getElementById("categoryFilter");
 if (categoryFilter) {
   categoryFilter.addEventListener("change", function () {
+  selectedSubCategory = "";
   renderSubCategories(this.value);
   loadProducts(true);
 });

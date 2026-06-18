@@ -465,7 +465,7 @@ function editProduct(index) {
 
   editCategory.value = product.category;
   document.getElementById("editPrice").value = product.price || "";
-  document.getElementById("editSpec").value = product.spec || "";
+  document.getElementById("editSpec").value = product.variants || "";
   document.getElementById("editModal").style.display = "block";
 }
 
@@ -504,7 +504,7 @@ async function saveEditProduct() {
     category: newCategory,
     image: product.image,
     price: newPrice,
-    spec: newSpec
+    variants: newSpec
   })
   .eq("id", product.id);
 

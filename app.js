@@ -465,6 +465,7 @@ function editProduct(index) {
 
   editCategory.value = product.category;
   document.getElementById("editPrice").value = product.price || "";
+  document.getElementById("editSpec").value = product.spec || "";
   document.getElementById("editModal").style.display = "block";
 }
 
@@ -491,6 +492,9 @@ async function saveEditProduct() {
   const newPrice =
   document.getElementById("editPrice").value;
 
+  const newSpec =
+  document.getElementById("editSpec").value;
+
   const currentScrollY = window.scrollY;
   const { error } = await db
   .from("products")
@@ -499,7 +503,8 @@ async function saveEditProduct() {
     desc: newDesc,
     category: newCategory,
     image: product.image,
-    price: newPrice
+    price: newPrice,
+    spec: newSpec
   })
   .eq("id", product.id);
 

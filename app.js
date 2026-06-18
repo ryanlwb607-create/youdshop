@@ -38,7 +38,7 @@ let bannerIndex = 0;
 let products = [];
 
 let currentPage = 0;
-const pageSize = 12;
+const pageSize = 20;
 let allLoaded = false;
 
 async function loadProducts(reset = true, searchMode = false) {
